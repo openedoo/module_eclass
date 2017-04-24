@@ -1,4 +1,6 @@
 from openedoo_project import db
+from openedoo_project.db import Query
+from openedoo_project import config
 
 
 class Eclass(db.Model):
@@ -22,3 +24,8 @@ class Eclass(db.Model):
     admin = db.Column(db.UnicodeText())
     privilege = db.Column(db.VARCHAR(8), default="private")
     unique_code = db.Column(db.Text)
+
+    def get_all(self):
+        """Get all records"""
+        result = Query().query('SELECT * FROM {}'.format(self.__tablename__))
+        return [dict(value) for value in result]

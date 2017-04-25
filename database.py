@@ -21,6 +21,7 @@ class Eclass(db.Model):
     :privilege varchar: The Eclass privilege, public or private
     :unique_code text: The Eclass unique code
     """
+
     __tablename__ = 'icampus_eclass'
     id = db.Column(db.Integer, primary_key=True, nullable=False)
     name = db.Column(db.VARCHAR(50), nullable=False)
@@ -33,6 +34,7 @@ class Eclass(db.Model):
 
     def insert(self, data=None):
         """Insert a record"""
+
         try:
             sql = "INSERT INTO {} VALUES (DEFAULT, '{}', '{}', '{}', '{}', \
             '{}', '{}', '{}')"
@@ -41,11 +43,18 @@ class Eclass(db.Model):
                              data['privilege'], data['unique_code'])
             result = {'message': 'success'}
             return result
+
         except Exception as e:
             raise InvalidUsage('Something bad happened', repr(e),
                                status_code=410)
 
     def get_all(self):
         """Get all records"""
-        result = query('SELECT * FROM {}'.format(self.__tablename__))
-        return result
+
+        try:
+            result = query('SELECT * FROM {}'.format(self.__tablename__))
+            return result
+
+        except Exception as e:
+            raise InvalidUsage('Something bad happened', repr(e),
+                               status_code=410)

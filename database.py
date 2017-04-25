@@ -1,5 +1,10 @@
 from openedoo_project import db
-from openedoo_project.db import Query
+
+# NOTE: if you can't import raw module in Openedoo 1.1.0.17,
+#       see https://github.com/openedoo/openedoo/issues/80
+#
+# TODO: change it to the correct way Openedoo handle query
+from openedoo_project.db.raw import query
 from openedoo_project import config
 
 
@@ -27,5 +32,6 @@ class Eclass(db.Model):
 
     def get_all(self):
         """Get all records"""
-        result = Query().query('SELECT * FROM {}'.format(self.__tablename__))
-        return [dict(value) for value in result]
+        result = query('SELECT * FROM {}'.format(self.__tablename__))
+        print result
+        return result

@@ -6,6 +6,7 @@ from openedoo_project import db
 # TODO: change it to the correct way Openedoo handle query
 from openedoo_project.db.raw import query
 from openedoo_project import config
+from .error_handler import InvalidUsage
 
 
 class Eclass(db.Model):
@@ -29,6 +30,20 @@ class Eclass(db.Model):
     admin = db.Column(db.UnicodeText())
     privilege = db.Column(db.VARCHAR(8), default="private")
     unique_code = db.Column(db.Text)
+
+    def insert(self, data=None):
+        """Insert a record"""
+        try:
+            sql = "INSERT INTO {} VALUES (DEFAULT, '{}', '{}', '{}', '{}', \
+            '{}', '{}', '{}')"
+            sql = sql.format(self.__tablename__, data['name'], data['course'],
+                             data['university'], data['member'], data['admin'],
+                             data['privilege'], data['unique_code'])
+            result = {'message': 'success'}
+            return result
+        except Exception as e:
+            raise InvalidUsage('Something bad happened', repr(e),
+                               status_code=410)
 
     def get_all(self):
         """Get all records"""

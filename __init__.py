@@ -16,11 +16,25 @@ def handle_invalid_usage(error):
 
 @module_eclass.route('/', methods=['POST', 'GET'])
 def eclass():
-    eclass = Eclass()
-    # Only accept application/json in post request data
-    request_data = request.get_json(silent=True)
-    if request.method == 'POST' and request_data:
-        result = eclass.insert(request_data)
-        return jsonify(result)
-    result = eclass.get_all()
-    return jsonify(result)
+    try:
+        eclass = Eclass()
+        # Only accept application/json in post request data
+        request_data = request.get_json(silent=True)
+        if request.method == 'POST' and request_data:
+            result = eclass.insert(request_data)
+            return jsonify(result)
+
+        elif request.method == 'POST' and not request_data:
+            raise InvalidUsage('Failed to load request data', '',
+                               status_code=415)
+
+        else:
+            result = eclass.get_all()
+            return jsonify(result)
+
+    except InvalidUsage as e:
+        raise InvalidUsage('Failed to load request data', '',
+                           status_code=415)
+
+    except Exception as e:
+        raise InvalidUsage('Something bad happened', repr(e), status_code=410)

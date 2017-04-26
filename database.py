@@ -58,3 +58,16 @@ class Eclass(db.Model):
         except Exception as e:
             raise InvalidUsage('Something bad happened', repr(e),
                                status_code=410)
+
+    def get(self, eclass_id=None):
+        """Get record by id"""
+
+        try:
+            sql = 'SELECT * FROM {} WHERE id={}'
+            sql = sql.format(self.__tablename__, eclass_id)
+            result = query(sql)
+            return result
+
+        except Exception as e:
+            raise InvalidUsage('Something bad happened', repr(e),
+                               status_code=410)

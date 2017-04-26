@@ -38,3 +38,14 @@ def eclass():
 
     except Exception as e:
         raise InvalidUsage('Something bad happened', repr(e), status_code=410)
+
+
+@module_eclass.route('/<eclass_id>', methods=['GET', 'PUT', 'DELETE'])
+def get_single_eclass(eclass_id):
+    try:
+        eclass = Eclass()
+        result = eclass.get(eclass_id)
+        return jsonify(result)
+
+    except Exception as e:
+        raise InvalidUsage('Something bad happened', repr(e), status_code=410)

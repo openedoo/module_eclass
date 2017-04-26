@@ -41,6 +41,7 @@ class Eclass(db.Model):
             sql = sql.format(self.__tablename__, data['name'], data['course'],
                              data['university'], data['member'], data['admin'],
                              data['privilege'], data['unique_code'])
+            query(sql)
             result = {'message': 'success'}
             return result
 

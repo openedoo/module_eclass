@@ -1,11 +1,18 @@
 from openedoo_project import db
-
-# NOTE: if you can't import raw module in Openedoo 1.1.0.17,
-#       see https://github.com/openedoo/openedoo/issues/80
-#
-# TODO: change it to the correct way Openedoo handle query
-from openedoo_project.db.raw import query
 from openedoo_project import config
+
+
+try:
+    # NOTE: if you can't import raw module in Openedoo 1.1.0.17,
+    #       see https://github.com/openedoo/openedoo/issues/80
+    #
+    # TODO: change it to the correct way Openedoo handle query
+
+    from openedoo_project.db.raw import query
+
+except ImportError:
+    from .lib.raw import query
+
 from .error_handler import InvalidUsage
 
 

@@ -1,0 +1,241 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>API Endpoint &#8212; Openedoo Module Eclass 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="api-endpoint">
+<h1>API Endpoint<a class="headerlink" href="#api-endpoint" title="Permalink to this headline">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="12%" />
+<col width="22%" />
+<col width="20%" />
+<col width="22%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Endpoint</td>
+<td>Http method</td>
+<td>Request data</td>
+<td>Response status code</td>
+<td>Example response</td>
+</tr>
+<tr class="row-even"><td rowspan="2">eclass/</td>
+<td>GET</td>
+<td>&#160;</td>
+<td>200</td>
+<td><p class="first">{</p>
+<p>“
+id”: “1”,</p>
+<p>&#8220;name&#8221;: &#8220;xyz&#8221;,</p>
+<p>&#8220;course&#8221;: &#8220;xyz&#8221;,</p>
+<p>&#8220;university&#8221;: &#8220;uny&#8221;,</p>
+<p>&#8220;member&#8221;:&#8221;{}&#8221;,</p>
+<p>&#8220;admin&#8221;:&#8221;{}&#8221;,</p>
+<p>&#8220;privilege&#8221;:&#8221;public&#8221;,</p>
+<p>&#8220;unique_code&#8221;:&#8221;qweasd&#8221;</p>
+<p class="last">}</p>
+</td>
+</tr>
+<tr class="row-odd"><td>POST</td>
+<td><p class="first">{</p>
+<p>&#8220;name&#8221;:&#8221;xyz&#8221;</p>
+<p>&#8220;course&#8221;:&#8221;xyz&#8221;,</p>
+<p>&#8220;university&#8221;:&#8221;uny&#8221;,</p>
+<p>&#8220;member&#8221;:&#8221;{}&#8221;,</p>
+<p>&#8220;admin&#8221;:&#8221;{}&#8221;,</p>
+<p>&#8220;privilege&#8221;:&#8221;public&#8221;,</p>
+<p>&#8220;unique_code&#8221;:&#8221;qweasd&#8221;</p>
+<p class="last">}</p>
+</td>
+<td>200</td>
+<td><p class="first">{</p>
+<p>“message”: ”success”</p>
+<p class="last">}</p>
+</td>
+</tr>
+<tr class="row-even"><td rowspan="3">eclass/&lt;id&gt;</td>
+<td>GET</td>
+<td>&#160;</td>
+<td>200</td>
+<td><p class="first">{</p>
+<p>“
+id”: “1”,</p>
+<p>&#8220;name&#8221;: &#8220;xyz&#8221;,</p>
+<p>&#8220;course&#8221;: &#8220;xyz&#8221;,</p>
+<p>&#8220;university&#8221;: &#8220;uny&#8221;,</p>
+<p>&#8220;member&#8221;:&#8221;{}&#8221;,</p>
+<p>&#8220;admin&#8221;:&#8221;{}&#8221;,</p>
+<p>&#8220;privilege&#8221;:&#8221;public&#8221;,</p>
+<p>&#8220;unique_code&#8221;:&#8221;qweasd&#8221;</p>
+<p class="last">}</p>
+</td>
+</tr>
+<tr class="row-odd"><td>PUT</td>
+<td><p class="first">{</p>
+<p>&#8220;name&#8221;:&#8221;xyz&#8221;</p>
+<p>&#8220;course&#8221;:&#8221;xyz&#8221;,</p>
+<p>&#8220;university&#8221;:&#8221;uny&#8221;,</p>
+<p>&#8220;member&#8221;:&#8221;{}&#8221;,</p>
+<p>&#8220;admin&#8221;:&#8221;{}&#8221;,</p>
+<p>&#8220;privilege&#8221;:&#8221;public&#8221;,</p>
+<p>&#8220;unique_code&#8221;:&#8221;qweasd&#8221;</p>
+<p class="last">}</p>
+</td>
+<td>200</td>
+<td><p class="first">{</p>
+<p>“message”: ”success”</p>
+<p class="last">}</p>
+</td>
+</tr>
+<tr class="row-even"><td>DELETE</td>
+<td>&#160;</td>
+<td>200</td>
+<td><p class="first">{</p>
+<p>“message”: ”success”</p>
+<p class="last">}</p>
+</td>
+</tr>
+<tr class="row-odd"><td rowspan="2">eclass/&lt;id&gt;/members</td>
+<td>GET</td>
+<td>&#160;</td>
+<td>200</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>POST</td>
+<td>&#160;</td>
+<td>200</td>
+<td><p class="first">{</p>
+<p>“message”: ”success”</p>
+<p class="last">}</p>
+</td>
+</tr>
+<tr class="row-odd"><td rowspan="3">eclass/&lt;id&gt;/members/&lt;id&gt;</td>
+<td>GET</td>
+<td>&#160;</td>
+<td>200</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>PUT</td>
+<td>&#160;</td>
+<td>200</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>DELETE</td>
+<td>&#160;</td>
+<td>200</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td rowspan="2">eclass/&lt;id&gt;/admins</td>
+<td>GET</td>
+<td>&#160;</td>
+<td>200</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>POST</td>
+<td>&#160;</td>
+<td>200</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td rowspan="3">eclass/&lt;id&gt;/admins/&lt;id&gt;</td>
+<td>GET</td>
+<td>&#160;</td>
+<td>200</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>PUT</td>
+<td>&#160;</td>
+<td>200</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>DELETE</td>
+<td>&#160;</td>
+<td>200</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="error_response.html">Error response</a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/api_endpoint.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<div class="footer" role="contentinfo">
+    <p>Made with <span style="color:red">&hearts;</span></p>
+<div>
+
+  </body>
+</html>

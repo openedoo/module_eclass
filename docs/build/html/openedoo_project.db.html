@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>openedoo_project.db package &#8212; Openedoo Module Eclass 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="openedoo-project-db-package">
+<h1>openedoo_project.db package<a class="headerlink" href="#openedoo-project-db-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-openedoo_project.db.raw">
+<span id="openedoo-project-db-raw-module"></span><h2>openedoo_project.db.raw module<a class="headerlink" href="#module-openedoo_project.db.raw" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="openedoo_project.db.raw.alchemyencoder">
+<code class="descclassname">openedoo_project.db.raw.</code><code class="descname">alchemyencoder</code><span class="sig-paren">(</span><em>obj</em><span class="sig-paren">)</span><a class="headerlink" href="#openedoo_project.db.raw.alchemyencoder" title="Permalink to this definition">¶</a></dt>
+<dd><p>JSON encoder function for SQLAlchemy special classes.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="openedoo_project.db.raw.query">
+<code class="descclassname">openedoo_project.db.raw.</code><code class="descname">query</code><span class="sig-paren">(</span><em>query</em><span class="sig-paren">)</span><a class="headerlink" href="#openedoo_project.db.raw.query" title="Permalink to this definition">¶</a></dt>
+<dd><p>output json</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-openedoo_project.db">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-openedoo_project.db" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="openedoo_project.db.Query">
+<em class="property">class </em><code class="descclassname">openedoo_project.db.</code><code class="descname">Query</code><span class="sig-paren">(</span><em>SQLALCHEMY_DATABASE_URI=None</em>, <em>database_name=None</em>, <em>db_uri=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openedoo_project.db.Query" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dl class="method">
+<dt id="openedoo_project.db.Query.create_database">
+<code class="descname">create_database</code><span class="sig-paren">(</span><em>database_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openedoo_project.db.Query.create_database" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openedoo_project.db.Query.delete_db">
+<code class="descname">delete_db</code><span class="sig-paren">(</span><em>tables</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#openedoo_project.db.Query.delete_db" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openedoo_project.db.Query.drop_table">
+<code class="descname">drop_table</code><span class="sig-paren">(</span><em>name_table</em><span class="sig-paren">)</span><a class="headerlink" href="#openedoo_project.db.Query.drop_table" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openedoo_project.db.Query.insert_db">
+<code class="descname">insert_db</code><span class="sig-paren">(</span><em>new</em><span class="sig-paren">)</span><a class="headerlink" href="#openedoo_project.db.Query.insert_db" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openedoo_project.db.Query.select_db">
+<code class="descname">select_db</code><span class="sig-paren">(</span><em>tables</em>, <em>column</em>, <em>page=0</em>, <em>page_size=None</em>, <em>**value_column</em><span class="sig-paren">)</span><a class="headerlink" href="#openedoo_project.db.Query.select_db" title="Permalink to this definition">¶</a></dt>
+<dd><p>equvalent with select * from tables where column = value_column, this didn&#8217;t support with order by or join table</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="openedoo_project.db.Query.update_db">
+<code class="descname">update_db</code><span class="sig-paren">(</span><em>tables</em>, <em>column</em>, <em>value_column</em>, <em>dict_update</em><span class="sig-paren">)</span><a class="headerlink" href="#openedoo_project.db.Query.update_db" title="Permalink to this definition">¶</a></dt>
+<dd><p>for update row in tables</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="openedoo_project.db.Query.version">
+<code class="descname">version</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#openedoo_project.db.Query.version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">openedoo_project.db package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-openedoo_project.db.raw">openedoo_project.db.raw module</a></li>
+<li><a class="reference internal" href="#module-openedoo_project.db">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/openedoo_project.db.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<div class="footer" role="contentinfo">
+    <p>Made with <span style="color:red">&hearts;</span></p>
+<div>
+
+  </body>
+</html>

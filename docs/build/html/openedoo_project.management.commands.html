@@ -1,0 +1,412 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>openedoo_project.management.commands package &#8212; Openedoo Module Eclass 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="openedoo-project-management-commands-package">
+<h1>openedoo_project.management.commands package<a class="headerlink" href="#openedoo-project-management-commands-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-openedoo_project.management.commands.create_module">
+<span id="openedoo-project-management-commands-create-module-module"></span><h2>openedoo_project.management.commands.create_module module<a class="headerlink" href="#module-openedoo_project.management.commands.create_module" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="openedoo_project.management.commands.create_module.Create">
+<em class="property">class </em><code class="descclassname">openedoo_project.management.commands.create_module.</code><code class="descname">Create</code><span class="sig-paren">(</span><em>func=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openedoo_project.management.commands.create_module.Create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">flask_script.commands.Command</span></code></p>
+<dl class="method">
+<dt id="openedoo_project.management.commands.create_module.Create.create_file_init">
+<code class="descname">create_file_init</code><span class="sig-paren">(</span><em>dir=None</em>, <em>file=None</em>, <em>apps=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openedoo_project.management.commands.create_module.Create.create_file_init" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openedoo_project.management.commands.create_module.Create.help">
+<code class="descname">help</code><em class="property"> = 'Create Module'</em><a class="headerlink" href="#openedoo_project.management.commands.create_module.Create.help" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openedoo_project.management.commands.create_module.Create.help_args">
+<code class="descname">help_args</code><em class="property"> = ('-h', '--help')</em><a class="headerlink" href="#openedoo_project.management.commands.create_module.Create.help_args" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openedoo_project.management.commands.create_module.Create.option_list">
+<code class="descname">option_list</code><em class="property"> = (&lt;flask_script.commands.Option object&gt;, &lt;flask_script.commands.Option object&gt;)</em><a class="headerlink" href="#openedoo_project.management.commands.create_module.Create.option_list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openedoo_project.management.commands.create_module.Create.run">
+<code class="descname">run</code><span class="sig-paren">(</span><em>name=None</em>, <em>remote_git=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openedoo_project.management.commands.create_module.Create.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create your app module</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openedoo_project.management.commands.create_module_app">
+<span id="openedoo-project-management-commands-create-module-app-module"></span><h2>openedoo_project.management.commands.create_module_app module<a class="headerlink" href="#module-openedoo_project.management.commands.create_module_app" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="openedoo_project.management.commands.create_module_app.CreateModule">
+<em class="property">class </em><code class="descclassname">openedoo_project.management.commands.create_module_app.</code><code class="descname">CreateModule</code><a class="headerlink" href="#openedoo_project.management.commands.create_module_app.CreateModule" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">flask_script.commands.Command</span></code></p>
+<dl class="method">
+<dt id="openedoo_project.management.commands.create_module_app.CreateModule.add_route">
+<code class="descname">add_route</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#openedoo_project.management.commands.create_module_app.CreateModule.add_route" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openedoo_project.management.commands.create_module_app.CreateModule.get_base_path">
+<code class="descname">get_base_path</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#openedoo_project.management.commands.create_module_app.CreateModule.get_base_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openedoo_project.management.commands.create_module_app.CreateModule.get_module_name">
+<code class="descname">get_module_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#openedoo_project.management.commands.create_module_app.CreateModule.get_module_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openedoo_project.management.commands.create_module_app.CreateModule.get_tmp">
+<code class="descname">get_tmp</code><span class="sig-paren">(</span><em>tmp_path</em><span class="sig-paren">)</span><a class="headerlink" href="#openedoo_project.management.commands.create_module_app.CreateModule.get_tmp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openedoo_project.management.commands.create_module_app.CreateModule.git_init">
+<code class="descname">git_init</code><span class="sig-paren">(</span><em>dir</em><span class="sig-paren">)</span><a class="headerlink" href="#openedoo_project.management.commands.create_module_app.CreateModule.git_init" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openedoo_project.management.commands.create_module_app.CreateModule.git_remote">
+<code class="descname">git_remote</code><span class="sig-paren">(</span><em>dir</em>, <em>remote_git</em><span class="sig-paren">)</span><a class="headerlink" href="#openedoo_project.management.commands.create_module_app.CreateModule.git_remote" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openedoo_project.management.commands.create_module_app.CreateModule.help">
+<code class="descname">help</code><em class="property"> = 'Create Module App'</em><a class="headerlink" href="#openedoo_project.management.commands.create_module_app.CreateModule.help" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openedoo_project.management.commands.create_module_app.CreateModule.help_args">
+<code class="descname">help_args</code><em class="property"> = ('-h', '--help')</em><a class="headerlink" href="#openedoo_project.management.commands.create_module_app.CreateModule.help_args" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openedoo_project.management.commands.create_module_app.CreateModule.option_list">
+<code class="descname">option_list</code><em class="property"> = (&lt;flask_script.commands.Option object&gt;, &lt;flask_script.commands.Option object&gt;)</em><a class="headerlink" href="#openedoo_project.management.commands.create_module_app.CreateModule.option_list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openedoo_project.management.commands.create_module_app.CreateModule.run">
+<code class="descname">run</code><span class="sig-paren">(</span><em>name=None</em>, <em>remote_git=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openedoo_project.management.commands.create_module_app.CreateModule.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create Module App with Openedoo</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="openedoo_project.management.commands.create_module_app.get_root_project">
+<code class="descclassname">openedoo_project.management.commands.create_module_app.</code><code class="descname">get_root_project</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#openedoo_project.management.commands.create_module_app.get_root_project" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-openedoo_project.management.commands.delete_module">
+<span id="openedoo-project-management-commands-delete-module-module"></span><h2>openedoo_project.management.commands.delete_module module<a class="headerlink" href="#module-openedoo_project.management.commands.delete_module" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="openedoo_project.management.commands.delete_module.Delete">
+<em class="property">class </em><code class="descclassname">openedoo_project.management.commands.delete_module.</code><code class="descname">Delete</code><span class="sig-paren">(</span><em>default_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openedoo_project.management.commands.delete_module.Delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">flask_script.commands.Command</span></code></p>
+<dl class="method">
+<dt id="openedoo_project.management.commands.delete_module.Delete.delete_module">
+<code class="descname">delete_module</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#openedoo_project.management.commands.delete_module.Delete.delete_module" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openedoo_project.management.commands.delete_module.Delete.get_options">
+<code class="descname">get_options</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#openedoo_project.management.commands.delete_module.Delete.get_options" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openedoo_project.management.commands.delete_module.Delete.help">
+<code class="descname">help</code><em class="property"> = 'Delete your module app'</em><a class="headerlink" href="#openedoo_project.management.commands.delete_module.Delete.help" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openedoo_project.management.commands.delete_module.Delete.help_args">
+<code class="descname">help_args</code><em class="property"> = ('-h', '--help')</em><a class="headerlink" href="#openedoo_project.management.commands.delete_module.Delete.help_args" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openedoo_project.management.commands.delete_module.Delete.run">
+<code class="descname">run</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#openedoo_project.management.commands.delete_module.Delete.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete your app module</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openedoo_project.management.commands.gunicornserver">
+<span id="openedoo-project-management-commands-gunicornserver-module"></span><h2>openedoo_project.management.commands.gunicornserver module<a class="headerlink" href="#module-openedoo_project.management.commands.gunicornserver" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="openedoo_project.management.commands.gunicornserver.GunicornServer">
+<em class="property">class </em><code class="descclassname">openedoo_project.management.commands.gunicornserver.</code><code class="descname">GunicornServer</code><span class="sig-paren">(</span><em>func=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openedoo_project.management.commands.gunicornserver.GunicornServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">flask_script.commands.Command</span></code></p>
+<dl class="attribute">
+<dt id="openedoo_project.management.commands.gunicornserver.GunicornServer.help">
+<code class="descname">help</code><em class="property"> = 'Start the Server with Gunicorn'</em><a class="headerlink" href="#openedoo_project.management.commands.gunicornserver.GunicornServer.help" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openedoo_project.management.commands.gunicornserver.GunicornServer.option_list">
+<code class="descname">option_list</code><em class="property"> = (&lt;flask_script.commands.Option object&gt;, &lt;flask_script.commands.Option object&gt;, &lt;flask_script.commands.Option object&gt;)</em><a class="headerlink" href="#openedoo_project.management.commands.gunicornserver.GunicornServer.option_list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openedoo_project.management.commands.gunicornserver.GunicornServer.run">
+<code class="descname">run</code><span class="sig-paren">(</span><em>host</em>, <em>port</em>, <em>workers</em><span class="sig-paren">)</span><a class="headerlink" href="#openedoo_project.management.commands.gunicornserver.GunicornServer.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Start the Server with Gunicorn</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openedoo_project.management.commands.install_module">
+<span id="openedoo-project-management-commands-install-module-module"></span><h2>openedoo_project.management.commands.install_module module<a class="headerlink" href="#module-openedoo_project.management.commands.install_module" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="openedoo_project.management.commands.install_module.Install">
+<em class="property">class </em><code class="descclassname">openedoo_project.management.commands.install_module.</code><code class="descname">Install</code><span class="sig-paren">(</span><em>default_url=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openedoo_project.management.commands.install_module.Install" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">flask_script.commands.Command</span></code></p>
+<dl class="method">
+<dt id="openedoo_project.management.commands.install_module.Install.animated">
+<code class="descname">animated</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#openedoo_project.management.commands.install_module.Install.animated" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openedoo_project.management.commands.install_module.Install.get_options">
+<code class="descname">get_options</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#openedoo_project.management.commands.install_module.Install.get_options" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openedoo_project.management.commands.install_module.Install.help">
+<code class="descname">help</code><em class="property"> = 'Install Module from git'</em><a class="headerlink" href="#openedoo_project.management.commands.install_module.Install.help" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openedoo_project.management.commands.install_module.Install.help_args">
+<code class="descname">help_args</code><em class="property"> = ('-h', '--help')</em><a class="headerlink" href="#openedoo_project.management.commands.install_module.Install.help_args" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openedoo_project.management.commands.install_module.Install.process">
+<code class="descname">process</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#openedoo_project.management.commands.install_module.Install.process" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openedoo_project.management.commands.install_module.Install.run">
+<code class="descname">run</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#openedoo_project.management.commands.install_module.Install.run" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openedoo_project.management.commands.install_module.Install.worker">
+<code class="descname">worker</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#openedoo_project.management.commands.install_module.Install.worker" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openedoo_project.management.commands.install_openedoo">
+<span id="openedoo-project-management-commands-install-openedoo-module"></span><h2>openedoo_project.management.commands.install_openedoo module<a class="headerlink" href="#module-openedoo_project.management.commands.install_openedoo" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="openedoo_project.management.commands.install_openedoo.Install">
+<em class="property">class </em><code class="descclassname">openedoo_project.management.commands.install_openedoo.</code><code class="descname">Install</code><a class="headerlink" href="#openedoo_project.management.commands.install_openedoo.Install" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">flask_script.commands.Command</span></code></p>
+<dl class="method">
+<dt id="openedoo_project.management.commands.install_openedoo.Install.get_tmp">
+<code class="descname">get_tmp</code><span class="sig-paren">(</span><em>tmp_path</em><span class="sig-paren">)</span><a class="headerlink" href="#openedoo_project.management.commands.install_openedoo.Install.get_tmp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openedoo_project.management.commands.install_openedoo.Install.help">
+<code class="descname">help</code><em class="property"> = 'Create Project Openedoo'</em><a class="headerlink" href="#openedoo_project.management.commands.install_openedoo.Install.help" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openedoo_project.management.commands.install_openedoo.Install.help_args">
+<code class="descname">help_args</code><em class="property"> = ('-h', '--help')</em><a class="headerlink" href="#openedoo_project.management.commands.install_openedoo.Install.help_args" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openedoo_project.management.commands.install_openedoo.Install.run">
+<code class="descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#openedoo_project.management.commands.install_openedoo.Install.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create your project with openedoo</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openedoo_project.management.commands.module">
+<span id="openedoo-project-management-commands-module-module"></span><h2>openedoo_project.management.commands.module module<a class="headerlink" href="#module-openedoo_project.management.commands.module" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="openedoo_project.management.commands.module.Modules">
+<em class="property">class </em><code class="descclassname">openedoo_project.management.commands.module.</code><code class="descname">Modules</code><span class="sig-paren">(</span><em>func=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openedoo_project.management.commands.module.Modules" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">flask_script.commands.Command</span></code></p>
+<dl class="method">
+<dt id="openedoo_project.management.commands.module.Modules.available">
+<code class="descname">available</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#openedoo_project.management.commands.module.Modules.available" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check Module Available</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="openedoo_project.management.commands.module.Modules.installed">
+<code class="descname">installed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#openedoo_project.management.commands.module.Modules.installed" title="Permalink to this definition">¶</a></dt>
+<dd><p>print all modul has installed</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="openedoo_project.management.commands.module.Modules.module">
+<code class="descname">module</code><em class="property"> = &lt;flask_script.Manager object&gt;</em><a class="headerlink" href="#openedoo_project.management.commands.module.Modules.module" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openedoo_project.management.commands.update_module">
+<span id="openedoo-project-management-commands-update-module-module"></span><h2>openedoo_project.management.commands.update_module module<a class="headerlink" href="#module-openedoo_project.management.commands.update_module" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="openedoo_project.management.commands.update_module.Update">
+<em class="property">class </em><code class="descclassname">openedoo_project.management.commands.update_module.</code><code class="descname">Update</code><span class="sig-paren">(</span><em>func=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openedoo_project.management.commands.update_module.Update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">flask_script.commands.Command</span></code></p>
+<dl class="attribute">
+<dt id="openedoo_project.management.commands.update_module.Update.help">
+<code class="descname">help</code><em class="property"> = 'Update your module app'</em><a class="headerlink" href="#openedoo_project.management.commands.update_module.Update.help" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openedoo_project.management.commands.update_module.Update.help_args">
+<code class="descname">help_args</code><em class="property"> = ('-h', '--help')</em><a class="headerlink" href="#openedoo_project.management.commands.update_module.Update.help_args" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openedoo_project.management.commands.update_module.Update.option_list">
+<code class="descname">option_list</code><em class="property"> = (&lt;flask_script.commands.Option object&gt;,)</em><a class="headerlink" href="#openedoo_project.management.commands.update_module.Update.option_list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openedoo_project.management.commands.update_module.Update.run">
+<code class="descname">run</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#openedoo_project.management.commands.update_module.Update.run" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openedoo_project.management.commands.waiting_animated">
+<span id="openedoo-project-management-commands-waiting-animated-module"></span><h2>openedoo_project.management.commands.waiting_animated module<a class="headerlink" href="#module-openedoo_project.management.commands.waiting_animated" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="openedoo_project.management.commands.waiting_animated.animated">
+<code class="descclassname">openedoo_project.management.commands.waiting_animated.</code><code class="descname">animated</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#openedoo_project.management.commands.waiting_animated.animated" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="openedoo_project.management.commands.waiting_animated.spinning_cursor">
+<code class="descclassname">openedoo_project.management.commands.waiting_animated.</code><code class="descname">spinning_cursor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#openedoo_project.management.commands.waiting_animated.spinning_cursor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-openedoo_project.management.commands">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-openedoo_project.management.commands" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">openedoo_project.management.commands package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-openedoo_project.management.commands.create_module">openedoo_project.management.commands.create_module module</a></li>
+<li><a class="reference internal" href="#module-openedoo_project.management.commands.create_module_app">openedoo_project.management.commands.create_module_app module</a></li>
+<li><a class="reference internal" href="#module-openedoo_project.management.commands.delete_module">openedoo_project.management.commands.delete_module module</a></li>
+<li><a class="reference internal" href="#module-openedoo_project.management.commands.gunicornserver">openedoo_project.management.commands.gunicornserver module</a></li>
+<li><a class="reference internal" href="#module-openedoo_project.management.commands.install_module">openedoo_project.management.commands.install_module module</a></li>
+<li><a class="reference internal" href="#module-openedoo_project.management.commands.install_openedoo">openedoo_project.management.commands.install_openedoo module</a></li>
+<li><a class="reference internal" href="#module-openedoo_project.management.commands.module">openedoo_project.management.commands.module module</a></li>
+<li><a class="reference internal" href="#module-openedoo_project.management.commands.update_module">openedoo_project.management.commands.update_module module</a></li>
+<li><a class="reference internal" href="#module-openedoo_project.management.commands.waiting_animated">openedoo_project.management.commands.waiting_animated module</a></li>
+<li><a class="reference internal" href="#module-openedoo_project.management.commands">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/openedoo_project.management.commands.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<div class="footer" role="contentinfo">
+    <p>Made with <span style="color:red">&hearts;</span></p>
+<div>
+
+  </body>
+</html>

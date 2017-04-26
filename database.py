@@ -71,3 +71,22 @@ class Eclass(db.Model):
         except Exception as e:
             raise InvalidUsage('Something bad happened', repr(e),
                                status_code=410)
+
+    def update(self, data=None):
+        """Update a record by id"""
+
+        try:
+            # Sql column construction from dict
+            column = ', '.join("{key}='{value}'".format(key=key, value=value)
+                               for key, value in data.iteritems()
+                               if key not in ('id'))
+            sql = 'UPDATE {} SET {} WHERE id={}'
+            sql = sql.format(self.__tablename__, column, data['id'])
+            # The query execution doesn't return any value
+            query(sql)
+            result = {'message': 'success'}
+            return result
+
+        except Exception as e:
+            raise InvalidUsage('Something bad happened', repr(e),
+                               status_code=410)

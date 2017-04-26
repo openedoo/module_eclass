@@ -32,10 +32,6 @@ def eclass():
             result = eclass.get_all()
             return jsonify(result)
 
-    except InvalidUsage as e:
-        raise InvalidUsage('Failed to load request data', '',
-                           status_code=415)
-
     except Exception as e:
         raise InvalidUsage('Something bad happened', repr(e), status_code=410)
 
@@ -44,6 +40,13 @@ def eclass():
 def get_single_eclass(eclass_id):
     try:
         eclass = Eclass()
+        # Only accept application/json in post request data
+        request_data = request.get_json(silent=True)
+        if request.method == 'PUT' and request_data:
+            request_data['id'] = eclass_id
+            result = eclass.update(request_data)
+            return jsonify(result)
+
         result = eclass.get(eclass_id)
         return jsonify(result)
 

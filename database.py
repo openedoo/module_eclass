@@ -1,11 +1,6 @@
 from openedoo_project import db
 from openedoo_project import config
 
-from openedoo_project.db import raw
-
-
-from .error_handler import InvalidUsage
-
 
 class Eclass(db.Model):
     """Eclass database schema

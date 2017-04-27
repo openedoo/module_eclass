@@ -2,7 +2,7 @@ from openedoo_project import db
 from openedoo_project import config
 
 
-class Eclass(db.Model):
+class EclassSchema(db.Model):
     """Eclass database schema
 
     :id integer: The Eclass id

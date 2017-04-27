@@ -1,6 +1,10 @@
+from ..database import EclassSchema
 
 
 class Eclass(object):
+    def __init__(self):
+        self.__tablename__ = EclassSchema.__tablename__
+
     def insert(self, data=None):
         """Insert a record"""
 

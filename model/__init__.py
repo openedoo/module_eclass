@@ -1,3 +1,4 @@
+from openedoo_project.db.raw import query
 from ..database import EclassSchema
 
 
@@ -19,7 +20,7 @@ class Eclass(object):
             return result
 
         except Exception as e:
-            raise {'error message': e}
+            return {'error message': e}
 
     def get_all(self):
         """Get all records"""
@@ -29,7 +30,7 @@ class Eclass(object):
             return result
 
         except Exception as e:
-            raise {'error message': e}
+            return {'error message': e}
 
     def get(self, eclass_id=None):
         """Get record by id"""
@@ -41,7 +42,7 @@ class Eclass(object):
             return result
 
         except Exception as e:
-            raise {'error message': e}
+            return {'error message': e}
 
     def update(self, data=None):
         """Update a record by id"""
@@ -59,4 +60,4 @@ class Eclass(object):
             return result
 
         except Exception as e:
-            raise {'error message': e}
+            return {'error message': e}

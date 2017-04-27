@@ -1,7 +1,7 @@
 from flask import jsonify
 from openedoo.core.libs import Blueprint, request, response
 from .error_handler import InvalidUsage
-from .database import Eclass
+from .model import Eclass
 
 
 module_eclass = Blueprint('module_eclass', __name__)
@@ -33,7 +33,8 @@ def eclass():
             return jsonify(result)
 
     except Exception as e:
-        raise InvalidUsage('Something bad happened', repr(e), status_code=410)
+        error = {'error message':e}
+        raise jsonify(error)
 
 
 @module_eclass.route('/<eclass_id>', methods=['GET', 'PUT', 'DELETE'])
@@ -51,4 +52,5 @@ def get_single_eclass(eclass_id):
         return jsonify(result)
 
     except Exception as e:
-        raise InvalidUsage('Something bad happened', repr(e), status_code=410)
+        error = {'error message':e}
+        raise jsonify(error)

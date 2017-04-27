@@ -1,17 +1,8 @@
 from openedoo_project import db
 from openedoo_project import config
 
+from openedoo_project.db import raw
 
-try:
-    # NOTE: if you can't import raw module in Openedoo 1.1.0.17,
-    #       see https://github.com/openedoo/openedoo/issues/80
-    #
-    # TODO: change it to the correct way Openedoo handle query
-
-    from openedoo_project.db.raw import query
-
-except ImportError:
-    from .lib.raw import query
 
 from .error_handler import InvalidUsage
 
@@ -38,63 +29,3 @@ class Eclass(db.Model):
     admin = db.Column(db.UnicodeText())
     privilege = db.Column(db.VARCHAR(8), default="private")
     unique_code = db.Column(db.Text)
-
-    def insert(self, data=None):
-        """Insert a record"""
-
-        try:
-            sql = "INSERT INTO {} VALUES (DEFAULT, '{}', '{}', '{}', '{}', \
-            '{}', '{}', '{}')"
-            sql = sql.format(self.__tablename__, data['name'], data['course'],
-                             data['university'], data['member'], data['admin'],
-                             data['privilege'], data['unique_code'])
-            query(sql)
-            result = {'message': 'success'}
-            return result
-
-        except Exception as e:
-            raise InvalidUsage('Something bad happened', repr(e),
-                               status_code=410)
-
-    def get_all(self):
-        """Get all records"""
-
-        try:
-            result = query('SELECT * FROM {}'.format(self.__tablename__))
-            return result
-
-        except Exception as e:
-            raise InvalidUsage('Something bad happened', repr(e),
-                               status_code=410)
-
-    def get(self, eclass_id=None):
-        """Get record by id"""
-
-        try:
-            sql = 'SELECT * FROM {} WHERE id={}'
-            sql = sql.format(self.__tablename__, eclass_id)
-            result = query(sql)
-            return result
-
-        except Exception as e:
-            raise InvalidUsage('Something bad happened', repr(e),
-                               status_code=410)
-
-    def update(self, data=None):
-        """Update a record by id"""
-
-        try:
-            # Sql column construction from dict
-            column = ', '.join("{key}='{value}'".format(key=key, value=value)
-                               for key, value in data.iteritems()
-                               if key not in ('id'))
-            sql = 'UPDATE {} SET {} WHERE id={}'
-            sql = sql.format(self.__tablename__, column, data['id'])
-            # The query execution doesn't return any value
-            query(sql)
-            result = {'message': 'success'}
-            return result
-
-        except Exception as e:
-            raise InvalidUsage('Something bad happened', repr(e),
-                               status_code=410)

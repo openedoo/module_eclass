@@ -33,8 +33,8 @@ def eclass():
             return jsonify(result)
 
     except Exception as e:
-        error = {'error message': e}
-        raise jsonify(error)
+        error = {'error message': repr(e)}
+        return jsonify(error)
 
 
 @module_eclass.route('/<eclass_id>', methods=['GET', 'PUT', 'DELETE'])
@@ -52,5 +52,5 @@ def get_single_eclass(eclass_id):
         return jsonify(result)
 
     except Exception as e:
-        error = {'error message': e}
-        raise jsonify(error)
+        error = {'error message': repr(e)}
+        return jsonify(error)

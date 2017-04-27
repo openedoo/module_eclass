@@ -61,3 +61,16 @@ class Eclass(object):
 
         except Exception as e:
             return {'error message': e}
+
+    def delete(self, eclass_id=None):
+        """Delete a record by id"""
+
+        try:
+            sql = 'DELETE FROM {} WHERE id={}'
+            sql = sql.format(self.__tablename__, eclass_id)
+            res = query(sql)
+            result = {'message': 'success'}
+            return result
+
+        except Exception as e:
+            return {'error message': repr(e)}

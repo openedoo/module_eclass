@@ -48,8 +48,13 @@ def get_single_eclass(eclass_id):
             result = eclass.update(request_data)
             return jsonify(result)
 
-        result = eclass.get(eclass_id)
-        return jsonify(result)
+        elif request.method == 'DELETE':
+            result = eclass.delete(eclass_id)
+            return jsonify(result)
+
+        else:
+            result = eclass.get(eclass_id)
+            return jsonify(result)
 
     except Exception as e:
         error = {'error message': repr(e)}

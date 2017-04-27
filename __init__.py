@@ -59,3 +59,15 @@ def get_single_eclass(eclass_id):
     except Exception as e:
         error = {'error message': repr(e)}
         return jsonify(error)
+
+
+@module_eclass.route('/<eclass_id>/members', methods=['GET', 'POST'])
+def eclass_members(eclass_id):
+    try:
+        eclass = Eclass()
+        result = eclass.get_members(eclass_id)
+        return jsonify(result)
+
+    except Exception as e:
+        error = {'error message': repr(e)}
+        return jsonify(error)

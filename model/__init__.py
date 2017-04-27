@@ -1,3 +1,4 @@
+from openedoo_project import json
 from openedoo_project.db.raw import query
 from ..database import EclassSchema
 
@@ -74,3 +75,15 @@ class Eclass(object):
 
         except Exception as e:
             return {'error message': repr(e)}
+
+    def get_members(self, eclass_id=None):
+        """Get eclass members"""
+
+        try:
+            get_eclass = self.get(eclass_id)
+            parse = json.loads(get_eclass)
+            members = parse[0]['member']
+            return members
+
+        except Exception as e:
+            return {'error message': e}

@@ -117,6 +117,28 @@ class Eclass(object):
         except Exception as e:
             return {'error message': str(e)}
 
+    def delete_member(self, eclass_id, member_id):
+        """Delete a member in an eclass"""
+
+        try:
+            members = self.get_members(eclass_id)
+            member_list = members.split(',')
+
+            if member_id in member_list:
+                member_list.remove(member_id)
+                members = ','.join(member_list)
+                data = {
+                    'member': member_list,
+                    'id': eclass_id
+                }
+
+                update = self.update(data)
+
+            return {'member': False}
+
+        except Exception as e:
+            return {'error message': str(e)}
+
     def get_members(self, eclass_id=None):
         """Get eclass members"""
 

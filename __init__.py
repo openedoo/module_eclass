@@ -90,8 +90,13 @@ app_route = '/<eclass_id>/members/<member_id>'
 def eclass_single_member(eclass_id, member_id):
     try:
         eclass = Eclass()
+        if request.method == 'DELETE':
+            result = eclass.delete_member(eclass_id, member_id)
+            return jsonify(result)
+
         result = eclass.get_member(eclass_id, member_id)
         return jsonify(result)
+
     except Exception as e:
         error = {'error message': repr(e)}
         return jsonify(error)

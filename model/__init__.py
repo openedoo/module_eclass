@@ -76,6 +76,28 @@ class Eclass(object):
         except Exception as e:
             return {'error message': repr(e)}
 
+    def add_member(self, data=None):
+        """Add member"""
+
+        try:
+            members = self.get_members(data['id'])
+            member_list = members.split(',')
+
+            if data['user_id'] not in member_list:
+                member_list.append(data['user_id'])
+                members = ','.join(member_list)
+                update_data = {
+                    'member': members,
+                    'id': data['id']
+                }
+                update_member = self.update(update_data)
+
+            result = {'message': 'success'}
+            return result
+
+        except Exception as e:
+            return {'error message': repr(e)}
+
     def get_members(self, eclass_id=None):
         """Get eclass members"""
 

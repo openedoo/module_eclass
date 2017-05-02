@@ -65,8 +65,20 @@ def get_single_eclass(eclass_id):
 def eclass_members(eclass_id):
     try:
         eclass = Eclass()
-        result = eclass.get_members(eclass_id)
-        return jsonify(result)
+        # Only accept application/json in post request data
+        request_data = request.get_json(silent=True)
+        if request.method == 'POST' and request_data:
+            request_data['id'] = eclass_id
+            result = eclass.add_member(request_data)
+            return jsonify(result)
+
+        elif request.method == 'POST' and not request_data:
+            raise InvalidUsage('Failed to load request data', '',
+                               status_code=415)
+
+        else:
+            result = eclass.get_members(eclass_id)
+            return jsonify(result)
 
     except Exception as e:
         error = {'error message': repr(e)}

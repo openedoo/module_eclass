@@ -16,7 +16,7 @@ class Eclass(object):
             return result
 
         except Exception as e:
-            return {'error message': e}
+            return {'error message': str(e)}
 
     def get_all(self):
         """Get all records"""
@@ -26,7 +26,7 @@ class Eclass(object):
             return result
 
         except Exception as e:
-            return {'error message': e}
+            return {'error message': str(e)}
 
     def get(self, eclass_id=None):
         """Get record by id"""
@@ -38,7 +38,7 @@ class Eclass(object):
             return result
 
         except Exception as e:
-            return {'error message': e}
+            return {'error message': str(e)}
 
     def update(self, data=None):
         """Update a record by id"""
@@ -56,7 +56,7 @@ class Eclass(object):
             return result
 
         except Exception as e:
-            return {'error message': e}
+            return {'error message': str(e)}
 
     def delete(self, eclass_id=None):
         """Delete a record by id"""
@@ -69,7 +69,7 @@ class Eclass(object):
             return result
 
         except Exception as e:
-            return {'error message': repr(e)}
+            return {'error message': str(e)}
 
     def get_members(self, eclass_id=None):
         """Get eclass members"""
@@ -81,4 +81,4 @@ class Eclass(object):
             return members
 
         except Exception as e:
-            return {'error message': e}
+            return {'error message': str(e)}

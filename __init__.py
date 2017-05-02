@@ -33,7 +33,7 @@ def eclass():
             return jsonify(result)
 
     except Exception as e:
-        error = {'error message': repr(e)}
+        error = {'error message': str(e)}
         return jsonify(error)
 
 
@@ -57,7 +57,7 @@ def get_single_eclass(eclass_id):
             return jsonify(result)
 
     except Exception as e:
-        error = {'error message': repr(e)}
+        error = {'error message': str(e)}
         return jsonify(error)
 
 
@@ -69,5 +69,5 @@ def eclass_members(eclass_id):
         return jsonify(result)
 
     except Exception as e:
-        error = {'error message': repr(e)}
+        error = {'error message': str(e)}
         return jsonify(error)

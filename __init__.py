@@ -83,3 +83,15 @@ def eclass_members(eclass_id):
     except Exception as e:
         error = {'error message': repr(e)}
         return jsonify(error)
+
+
+app_route = '/<eclass_id>/members/<member_id>'
+@module_eclass.route(app_route, methods=['GET', 'DELETE'])
+def eclass_single_member(eclass_id, member_id):
+    try:
+        eclass = Eclass()
+        result = eclass.get_member(eclass_id, member_id)
+        return jsonify(result)
+    except Exception as e:
+        error = {'error message': repr(e)}
+        return jsonify(error)

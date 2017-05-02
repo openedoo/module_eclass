@@ -98,6 +98,25 @@ class Eclass(object):
         except Exception as e:
             return {'error message': repr(e)}
 
+    def get_member(self, eclass_id=None, member_id=None):
+        """Get an eclass member"""
+
+        try:
+            members = self.get_members(eclass_id)
+            member_list = members.split(',')
+
+            result = {'member': False}
+            if member_id in member_list:
+                result = {
+                    'member': True,
+                    'user_id': member_id
+                }
+
+            return result
+
+        except Exception as e:
+            return {'error message': str(e)}
+
     def get_members(self, eclass_id=None):
         """Get eclass members"""
 

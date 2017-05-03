@@ -1,6 +1,7 @@
 from openedoo_project import json
 from openedoo_project.db.raw import query
 from ..database import EclassSchema
+from ..error_handler import simple_error_message
 
 SUCCESS_MESSAGE = {'message': 'success'}
 
@@ -23,7 +24,7 @@ class Eclass(object):
             return SUCCESS_MESSAGE
 
         except Exception as e:
-            return {'error message': e}
+            return simple_error_message(str(e))
 
     def get_all(self):
         """Get all records"""
@@ -33,7 +34,7 @@ class Eclass(object):
             return result
 
         except Exception as e:
-            return {'error message': e}
+            return simple_error_message(str(e))
 
     def get(self, eclass_id=None):
         """Get record by id"""
@@ -45,7 +46,7 @@ class Eclass(object):
             return result
 
         except Exception as e:
-            return {'error message': e}
+            return simple_error_message(str(e))
 
     def update(self, data=None):
         """Update a record by id"""
@@ -62,7 +63,7 @@ class Eclass(object):
             return SUCCESS_MESSAGE
 
         except Exception as e:
-            return {'error message': e}
+            return simple_error_message(str(e))
 
     def delete(self, eclass_id=None):
         """Delete a record by id"""
@@ -75,7 +76,7 @@ class Eclass(object):
             return SUCCESS_MESSAGE
 
         except Exception as e:
-            return {'error message': repr(e)}
+            return simple_error_message(str(e))
 
     def add_member(self, data=None):
         """Add member"""
@@ -96,7 +97,7 @@ class Eclass(object):
             return SUCCESS_MESSAGE
 
         except Exception as e:
-            return {'error message': repr(e)}
+            return simple_error_message(str(e))
 
     def get_member(self, eclass_id=None, member_id=None):
         """Get an eclass member"""
@@ -115,7 +116,7 @@ class Eclass(object):
             return result
 
         except Exception as e:
-            return {'error message': str(e)}
+            return simple_error_message(str(e))
 
     def delete_member(self, eclass_id, member_id):
         """Delete a member in an eclass"""
@@ -137,7 +138,7 @@ class Eclass(object):
             return {'member': False}
 
         except Exception as e:
-            return {'error message': str(e)}
+            return simple_error_message(str(e))
 
     def get_members(self, eclass_id=None):
         """Get eclass members"""
@@ -149,4 +150,4 @@ class Eclass(object):
             return members
 
         except Exception as e:
-            return {'error message': e}
+            return simple_error_message(str(e))

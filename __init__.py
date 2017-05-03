@@ -1,6 +1,6 @@
 from flask import jsonify
 from openedoo.core.libs import Blueprint, request, response
-from .error_handler import InvalidUsage
+from .error_handler import InvalidUsage, simple_error_message
 from .model import Eclass
 
 
@@ -33,7 +33,7 @@ def eclass():
             return jsonify(result)
 
     except Exception as e:
-        error = {'error message': repr(e)}
+        error = simple_error_message(str(e))
         return jsonify(error)
 
 
@@ -57,7 +57,7 @@ def get_single_eclass(eclass_id):
             return jsonify(result)
 
     except Exception as e:
-        error = {'error message': repr(e)}
+        error = simple_error_message(str(e))
         return jsonify(error)
 
 
@@ -81,7 +81,7 @@ def eclass_members(eclass_id):
             return jsonify(result)
 
     except Exception as e:
-        error = {'error message': repr(e)}
+        error = simple_error_message(str(e))
         return jsonify(error)
 
 
@@ -98,5 +98,5 @@ def eclass_single_member(eclass_id, member_id):
         return jsonify(result)
 
     except Exception as e:
-        error = {'error message': repr(e)}
+        error = simple_error_message(str(e))
         return jsonify(error)

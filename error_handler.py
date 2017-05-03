@@ -10,6 +10,15 @@ the better solution than using `abort` to signal errors for Invalid API usage.
 from flask import jsonify
 
 
+def simple_error_message(value=None):
+    """A simple error message setter.
+
+    In order to provide consistency in the error message and easier to change
+    in the future.
+    """
+    return {'error message': value}
+
+
 class InvalidUsage(Exception):
     status_code = 400
 

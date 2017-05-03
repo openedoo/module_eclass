@@ -2,6 +2,8 @@ from openedoo_project import json
 from openedoo_project.db.raw import query
 from ..database import EclassSchema
 
+SUCCESS_MESSAGE = {'message': 'success'}
+
 
 class Eclass(object):
     def __init__(self):
@@ -17,8 +19,8 @@ class Eclass(object):
                              data['university'], data['member'], data['admin'],
                              data['privilege'], data['unique_code'])
             query(sql)
-            result = {'message': 'success'}
-            return result
+
+            return SUCCESS_MESSAGE
 
         except Exception as e:
             return {'error message': e}
@@ -57,8 +59,7 @@ class Eclass(object):
             sql = sql.format(self.__tablename__, column, data['id'])
             # The query execution doesn't return any value
             query(sql)
-            result = {'message': 'success'}
-            return result
+            return SUCCESS_MESSAGE
 
         except Exception as e:
             return {'error message': e}
@@ -70,8 +71,8 @@ class Eclass(object):
             sql = 'DELETE FROM {} WHERE id={}'
             sql = sql.format(self.__tablename__, eclass_id)
             res = query(sql)
-            result = {'message': 'success'}
-            return result
+
+            return SUCCESS_MESSAGE
 
         except Exception as e:
             return {'error message': repr(e)}
@@ -92,8 +93,7 @@ class Eclass(object):
                 }
                 update_member = self.update(update_data)
 
-            result = {'message': 'success'}
-            return result
+            return SUCCESS_MESSAGE
 
         except Exception as e:
             return {'error message': repr(e)}

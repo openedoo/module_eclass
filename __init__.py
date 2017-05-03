@@ -9,13 +9,13 @@ module_eclass = Blueprint('module_eclass', __name__)
 
 @module_eclass.errorhandler(InvalidUsage)
 def handle_invalid_usage(error):
-    response = jsonify(error.to_dict())
-    response.status_code = error.status_code
-    return response
+    res = jsonify(error.to_dict())
+    res.status_code = error.status_code
+    return res
 
 
 @module_eclass.route('/', methods=['POST', 'GET'])
-def eclass():
+def index():
     try:
         eclass = Eclass()
         # Only accept application/json in post request data

@@ -132,7 +132,6 @@ class Eclass(object):
                     'member': member_list,
                     'id': eclass_id
                 }
-
                 update = self.update(data)
 
             return {'member': False}

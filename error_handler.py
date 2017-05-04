@@ -1,16 +1,26 @@
-"""API error_handler.
-
-This module produces exception or error message the user is expecting,
-the better solution than using `abort` to signal errors for Invalid API usage.
-
-.. _Reference:
-   http://flask.pocoo.org/docs/0.12/patterns/apierrors/
-
-"""
 from flask import jsonify
 
 
+def simple_error_message(value=None):
+    """A simple error message setter.
+
+    In order to provide consistency in the error message and easier to change
+    in the future.
+    """
+    return {'error message': value}
+
+
 class InvalidUsage(Exception):
+    """API error_handler.
+
+    This module produces exception or error message the user is expecting,
+    the better solution than using `abort` to signal errors for
+    Invalid API usage.
+
+    .. _Reference:
+       http://flask.pocoo.org/docs/0.12/patterns/apierrors/
+
+    """
     status_code = 400
 
     def __init__(self, message, exception, status_code=None, payload=None):

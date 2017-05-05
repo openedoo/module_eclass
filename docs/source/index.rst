@@ -36,6 +36,28 @@ API Endpoints
             },
         ]"
 
+.. http:post::  /eclass/
+
+    Add an eclass.
+
+    Accepted Request is `application/json`::
+
+        {
+          "name": "yutyutyu",
+          "course": "xyz",
+          "university": "uny",
+          "member": "",
+          "admin": "",
+          "privilege": "public",
+          "unique_code": "qweasd"
+        }
+
+    Returns::
+
+        {
+          "message": "success"
+        }
+
 
 .. toctree::
    :maxdepth: 2

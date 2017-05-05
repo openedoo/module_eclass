@@ -129,7 +129,7 @@ class Eclass(object):
                 member_list.remove(member_id)
                 members = ','.join(member_list)
                 data = {
-                    'member': member_list,
+                    'member': members,
                     'id': eclass_id
                 }
                 update = self.update(data)

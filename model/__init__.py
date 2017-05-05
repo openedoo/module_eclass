@@ -6,6 +6,31 @@ from ..error_handler import simple_error_message
 SUCCESS_MESSAGE = {'message': 'success'}
 
 
+def sql_column_builder(data=None):
+    """SQL column builder.
+
+    A helper for building column list in SQL syntax from python dict.
+    Example:
+
+        data = {'id': 1, 'name': 'example'}
+
+        become:
+
+        id='1', name='example'
+
+    Then it can be used with existing SQL syntax by joining them.
+    Example:
+
+        sql = 'INSERT INTO table SET {}'.format(sql_column_builder(data))
+
+    """
+
+    column = ', '.join("{key}='{value}'"
+                       .format(key=key, value=value)
+                       for key, value in data.iteritems())
+    return column
+
+
 class Eclass(object):
     def __init__(self):
         self.__tablename__ = EclassSchema.__tablename__
@@ -14,11 +39,8 @@ class Eclass(object):
         """Insert a record"""
 
         try:
-            sql = "INSERT INTO {} VALUES (DEFAULT, '{}', '{}', '{}', '{}', \
-            '{}', '{}', '{}')"
-            sql = sql.format(self.__tablename__, data['name'], data['course'],
-                             data['university'], data['member'], data['admin'],
-                             data['privilege'], data['unique_code'])
+            sql = "INSERT INTO {} SET id=DEFAULT, {}"
+            sql = sql.format(self.__tablename__, sql_column_builder(data))
             query(sql)
 
             return SUCCESS_MESSAGE
@@ -52,10 +74,9 @@ class Eclass(object):
         """Update a record by id"""
 
         try:
-            # Sql column construction from dict
-            column = ', '.join("{key}='{value}'".format(key=key, value=value)
-                               for key, value in data.iteritems()
-                               if key not in ('id'))
+            column_data = {key: value for key, value in data.iteritems()
+                           if key not in ('id')}
+            column = sql_column_builder(column_data)
             sql = 'UPDATE {} SET {} WHERE id={}'
             sql = sql.format(self.__tablename__, column, data['id'])
             # The query execution doesn't return any value

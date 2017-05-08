@@ -100,3 +100,15 @@ def eclass_single_member(eclass_id, member_id):
     except Exception as e:
         error = simple_error_message(str(e))
         return jsonify(error)
+
+
+@module_eclass.route('/<eclass_id>/admins', methods=['GET'])
+def eclass_admins(eclass_id):
+    try:
+        eclass = Eclass()
+        result = eclass.get_admins(eclass_id)
+        return jsonify(result)
+
+    except Exception as e:
+        error = simple_error_message(str(e))
+        return jsonify(error)

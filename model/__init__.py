@@ -171,3 +171,15 @@ class Eclass(object):
 
         except Exception as e:
             return simple_error_message(str(e))
+
+    def get_admins(self, eclass_id=None):
+        """Get eclass admins"""
+
+        try:
+            get_eclass = self.get(eclass_id)
+            parse = json.loads(get_eclass)
+            admins = parse[0]['admin']
+            return admins
+
+        except Exception as e:
+            return simple_error_message(str(e))

@@ -1,10 +1,22 @@
-import uuid
+import os
+import tempfile
 from openedoo_project import json
 from openedoo_project.db.raw import query
 from ..database import EclassSchema
 from ..error_handler import simple_error_message
 
 SUCCESS_MESSAGE = {'message': 'success'}
+
+
+def generate_unique_code(prefix='ecl-'):
+    """Generates a short and easy to remember unique_code.
+
+    The python uuid module generates too long code. In order to keep it short,
+    it uses tempfile.NamedTemporaryFile.
+    """
+    temporary = tempfile.NamedTemporaryFile(prefix=prefix)
+    unique_code = os.path.basename(temporary.name)
+    return unique_code
 
 
 def sql_column_builder(data=None):
@@ -89,7 +101,7 @@ class Eclass(object):
 
     def add(self, data=None):
         try:
-            data['unique_code'] = str(uuid.uuid4())
+            data['unique_code'] = generate_unique_code()
             db_query = DBQuery()
             result = db_query.insert(self.__tablename__, data)
             SUCCESS_MESSAGE['unique_code'] = data['unique_code']

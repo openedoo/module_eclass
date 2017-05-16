@@ -32,12 +32,52 @@ def sql_column_builder(data=None):
     return column
 
 
+def sql_select_expr_builder(expr=None):
+    """SQL select expression builder.
+
+    A helper for building select expression in SQL syntax from python list.
+    """
+    return ', '.join('{}'.format(expr_item for expr_item in expr))
+
+
 class DBQuery(object):
     def insert(self, table=None, col=None):
         try:
             sql = "INSERT INTO {} SET id=DEFAULT, {}"
             sql = sql.format(table, sql_column_builder(col))
             return query(sql)
+
+        except Exception as e:
+            raise
+
+    def select(self, select_expr=None, table=None):
+        """Select query.
+
+        You can pass the select expression with python list for many columns,
+        string for one column, and none if you want to select all.
+
+        Example:
+
+            db_query.select(select_expr=['a_table.id','a_table.name'],
+                            table='a_table')
+
+        Equivalent to:
+
+            'SELECT a_table.id, a_table.name FROM a_table'
+
+        """
+        try:
+            if not select_expr:
+                col = '*'
+            elif len(select_expr) == 1:
+                col = select_expr[0]
+            elif isinstance(select_expr, basestring):
+                col = select_expr
+            else:
+                col = sql_select_expr_builder(select_expr)
+
+            result = query('SELECT {} FROM {}'.format(col, table))
+            return result
 
         except Exception as e:
             raise
@@ -62,7 +102,8 @@ class Eclass(object):
         """Get all records"""
 
         try:
-            result = query('SELECT * FROM {}'.format(self.__tablename__))
+            db_query = DBQuery()
+            result = db_query.select(table=self.__tablename__)
             return result
 
         except Exception as e:

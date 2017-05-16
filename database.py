@@ -24,3 +24,25 @@ class EclassSchema(db.Model):
     admin = db.Column(db.UnicodeText())
     privilege = db.Column(db.VARCHAR(8), default="private")
     unique_code = db.Column(db.Text)
+
+
+class EclassPostsSchema(db.Model):
+    """Eclass posts database schema.
+
+    :id integer: The Post id
+    :class_id integer: The Eclass id
+    :description text: The post's description
+    :reply text: The post's reply
+    :attachment text: The post's file attachment
+    :created datetime: Time when The post is created
+    :edited datetime: Time when The post is edited
+    """
+
+    __tablename__ = 'icampus_eclass_post'
+    id = db.Column(db.Integer, primary_key=True, nullable=False)
+    class_id = db.Column(db.Integer, nullable=False)
+    description = db.Column(db.Text)
+    reply = db.Column(db.UnicodeText())
+    attachment = db.Column(db.Text)
+    created = db.Column(db.DateTime)
+    edited = db.Column(db.DateTime)

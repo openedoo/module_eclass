@@ -21,7 +21,7 @@ def index():
         # Only accept application/json in post request data
         request_data = request.get_json(silent=True)
         if request.method == 'POST' and request_data:
-            result = eclass.insert(request_data)
+            result = eclass.add(request_data)
             return jsonify(result)
 
         elif request.method == 'POST' and not request_data:

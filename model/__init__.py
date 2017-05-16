@@ -32,19 +32,26 @@ def sql_column_builder(data=None):
     return column
 
 
+class DBQuery(object):
+    def insert(self, table=None, col=None):
+        try:
+            sql = "INSERT INTO {} SET id=DEFAULT, {}"
+            sql = sql.format(table, sql_column_builder(col))
+            return query(sql)
+
+        except Exception as e:
+            raise
+
+
 class Eclass(object):
     def __init__(self):
         self.__tablename__ = EclassSchema.__tablename__
 
-    def insert(self, data=None):
-        """Insert a record"""
-
+    def add(self, data=None):
         try:
             data['unique_code'] = str(uuid.uuid4())
-            sql = "INSERT INTO {} SET id=DEFAULT, {}"
-            sql = sql.format(self.__tablename__, sql_column_builder(data))
-            query(sql)
-
+            db_query = DBQuery()
+            result = db_query.insert(self.__tablename__, data)
             SUCCESS_MESSAGE['unique_code'] = data['unique_code']
             return SUCCESS_MESSAGE
 

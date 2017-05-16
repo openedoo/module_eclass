@@ -1,3 +1,4 @@
+import uuid
 from openedoo_project import json
 from openedoo_project.db.raw import query
 from ..database import EclassSchema
@@ -39,10 +40,12 @@ class Eclass(object):
         """Insert a record"""
 
         try:
+            data['unique_code'] = str(uuid.uuid4())
             sql = "INSERT INTO {} SET id=DEFAULT, {}"
             sql = sql.format(self.__tablename__, sql_column_builder(data))
             query(sql)
 
+            SUCCESS_MESSAGE['unique_code'] = data['unique_code']
             return SUCCESS_MESSAGE
 
         except Exception as e:

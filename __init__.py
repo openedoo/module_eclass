@@ -122,6 +122,9 @@ def eclass_discussion(eclass_id):
         if request.method == 'POST' and request_data:
             result = eclass.add_discussion(eclass_id, request_data)
             return jsonify(result)
+        else:
+            result = eclass.get_discussion(eclass_id)
+            return jsonify(result)
 
     except Exception as e:
         error = simple_error_message(str(e))

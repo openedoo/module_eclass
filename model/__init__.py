@@ -62,7 +62,7 @@ class DBQuery(object):
         except Exception as e:
             raise
 
-    def select(self, select_expr=None, table=None):
+    def select(self, select_expr=None, table=None, where_clause=None):
         """Select query.
 
         You can pass the select expression with python list for many columns,
@@ -88,7 +88,16 @@ class DBQuery(object):
             else:
                 col = sql_select_expr_builder(select_expr)
 
-            result = query('SELECT {} FROM {}'.format(col, table))
+            sql = 'SELECT {} FROM {}'.format(col, table)
+            if where_clause:
+                sql_where = "{key}='{value}'"
+                for key, value in where_clause.iteritems():
+                    sql_where = sql_where.format(key=key, value=value)
+                sql = 'SELECT {} FROM {} WHERE {}'.format(col,
+                                                          table,
+                                                          sql_where)
+
+            result = query(sql)
             return result
 
         except Exception as e:
@@ -125,9 +134,10 @@ class Eclass(object):
         """Get record by id"""
 
         try:
-            sql = 'SELECT * FROM {} WHERE id={}'
-            sql = sql.format(self.__tablename__, eclass_id)
-            result = query(sql)
+            where_clause = {'id': eclass_id}
+            db_query = DBQuery()
+            result = db_query.select(table=self.__tablename__,
+                                     where_clause=where_clause)
             return result
 
         except Exception as e:

@@ -15,7 +15,7 @@ class EclassSchema(db.Model):
     :unique_code text: The Eclass unique code
     """
 
-    __tablename__ = 'icampus_eclass'
+    __tablename__ = 'eclass_description'
     id = db.Column(db.Integer, primary_key=True, nullable=False)
     name = db.Column(db.VARCHAR(50), nullable=False)
     course = db.Column(db.VARCHAR(50))
@@ -38,7 +38,7 @@ class EclassPostsSchema(db.Model):
     :edited datetime: Time when The post is edited
     """
 
-    __tablename__ = 'icampus_eclass_post'
+    __tablename__ = 'eclass_discussion'
     id = db.Column(db.Integer, primary_key=True, nullable=False)
     class_id = db.Column(db.Integer, nullable=False)
     description = db.Column(db.Text)

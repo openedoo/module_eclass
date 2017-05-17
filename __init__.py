@@ -112,3 +112,17 @@ def eclass_admins(eclass_id):
     except Exception as e:
         error = simple_error_message(str(e))
         return jsonify(error)
+
+
+@module_eclass.route('/<eclass_id>/discussions', methods=['GET', 'POST'])
+def eclass_discussion(eclass_id):
+    try:
+        eclass = Eclass()
+        request_data = request.get_json(silent=True)
+        if request.method == 'POST' and request_data:
+            result = eclass.add_discussion(eclass_id, request_data)
+            return jsonify(result)
+
+    except Exception as e:
+        error = simple_error_message(str(e))
+        return jsonify(error)

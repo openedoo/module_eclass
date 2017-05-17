@@ -1,11 +1,25 @@
+import re
 import os
 import tempfile
+import datetime
 from openedoo_project import json
 from openedoo_project.db.raw import query
-from ..database import EclassSchema
+from ..database import EclassSchema, EclassPostsSchema
 from ..error_handler import simple_error_message
 
 SUCCESS_MESSAGE = {'message': 'success'}
+
+
+def sanitize(input_string=None):
+    """Find percent symbol (%) to avoid python string format collision"""
+    escaped = re.escape(input_string)
+    input_as_list = list(escaped)
+    for index, value in enumerate(input_as_list):
+        if value == '%':
+            input_as_list[index] = '%%'
+
+    input_string = ''.join(input_as_list)
+    return input_string
 
 
 def generate_unique_code(prefix='ecl-'):
@@ -41,6 +55,7 @@ def sql_column_builder(data=None):
     column = ', '.join("{key}='{value}'"
                        .format(key=key, value=value)
                        for key, value in data.iteritems())
+    print column
     return column
 
 

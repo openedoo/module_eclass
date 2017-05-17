@@ -271,3 +271,27 @@ class Eclass(object):
 
         except Exception as e:
             return simple_error_message(str(e))
+
+    def add_discussion(self, eclass_id=None, data=None):
+        """Add discussion"""
+
+        try:
+            get_admins = self.get_admins(eclass_id)
+            if data['user_id'] not in get_admins:
+                raise ValueError('The user is not permitted to post any '
+                                 'discussion here')
+
+
+            current_time = str(datetime.datetime.now())
+            data['created'] = current_time
+            data['edited'] = current_time
+            data['class_id'] = eclass_id
+            data['description'] = sanitize(data['description'])
+            del data['user_id']
+            table_name = EclassPostsSchema.__tablename__
+            db_query = DBQuery()
+            result = db_query.insert(table_name, data)
+            return SUCCESS_MESSAGE
+
+        except Exception as e:
+            return simple_error_message(str(e))

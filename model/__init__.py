@@ -295,3 +295,13 @@ class Eclass(object):
 
         except Exception as e:
             return simple_error_message(str(e))
+
+    def get_discussion(self, eclass_id=None):
+        try:
+            db_query = DBQuery()
+            table_name = EclassPostsSchema.__tablename__
+            result = db_query.select(table=table_name)
+            return result
+
+        except Exception as e:
+            return simple_error_message(str(e))

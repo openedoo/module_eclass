@@ -1,4 +1,4 @@
-import re
+import cgi
 import os
 import tempfile
 import datetime
@@ -12,7 +12,7 @@ SUCCESS_MESSAGE = {'message': 'success'}
 
 def sanitize(input_string=None):
     """Find percent symbol (%) to avoid python string format collision"""
-    escaped = re.escape(input_string)
+    escaped = cgi.escape(input_string)
     input_as_list = list(escaped)
     for index, value in enumerate(input_as_list):
         if value == '%':

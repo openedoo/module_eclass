@@ -55,7 +55,6 @@ def sql_column_builder(data=None):
     column = ', '.join("{key}='{value}'"
                        .format(key=key, value=value)
                        for key, value in data.iteritems())
-    print column
     return column
 
 

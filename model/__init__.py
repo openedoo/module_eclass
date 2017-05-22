@@ -53,7 +53,7 @@ def sql_column_builder(data=None):
     """
 
     column = ', '.join("{key}='{value}'"
-                       .format(key=key, value=value)
+                       .format(key=key, value=sanitize(value))
                        for key, value in data.iteritems())
     return column
 
@@ -106,7 +106,7 @@ class DBQuery(object):
             if where_clause:
                 sql_where = "{key}='{value}'"
                 for key, value in where_clause.iteritems():
-                    sql_where = sql_where.format(key=key, value=value)
+                    sql_where = sql_where.format(key=key, value=sanitize(value))
                 sql = 'SELECT {} FROM {} WHERE {}'.format(col,
                                                           table,
                                                           sql_where)

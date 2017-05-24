@@ -1,7 +1,7 @@
 from flask import jsonify
 from openedoo.core.libs import Blueprint, request, response
-from .error_handler import InvalidUsage, simple_error_message
-from .model import Eclass
+from .libs.error_handler import InvalidUsage, simple_error_message
+from .model.eclass import Eclass
 
 
 module_eclass = Blueprint('module_eclass', __name__)
@@ -33,8 +33,7 @@ def index():
             return jsonify(result)
 
     except Exception as e:
-        error = simple_error_message(str(e))
-        return jsonify(error)
+        raise
 
 
 @module_eclass.route('/<eclass_id>', methods=['GET', 'PUT', 'DELETE'])

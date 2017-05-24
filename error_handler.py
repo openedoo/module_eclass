@@ -22,6 +22,7 @@ class InvalidUsage(Exception):
 
     """
     status_code = 400
+    more_info = "http://openedoo-eclass-module.readthedocs.io/en/latest/"
 
     def __init__(self, message, exception, status_code=None, payload=None):
         Exception.__init__(self)
@@ -35,4 +36,5 @@ class InvalidUsage(Exception):
         rv = dict(self.payload or ())
         rv['message'] = self.message
         rv['exception'] = self.exception
+        rv['more_info'] = self.more_info
         return rv

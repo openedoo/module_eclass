@@ -44,7 +44,7 @@ def sql_select_expr_builder(expr=None):
 class DBQuery(object):
     def insert(self, table=None, col=None):
         try:
-            sql = "INSERT INTO {} SET id=DEFAULT{}"
+            sql = "INSERT INTO {} SET id=DEFAULT, {}"
             sql = sql.format(table, sql_column_builder(col))
             return query(sql)
 

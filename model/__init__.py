@@ -5,7 +5,7 @@ import datetime
 from openedoo_project import json
 from openedoo_project.db.raw import query
 from ..database import EclassSchema, EclassPostsSchema
-from ..error_handler import simple_error_message
+from ..error_handler import simple_error_message, InvalidUsage
 
 SUCCESS_MESSAGE = {'message': 'success'}
 
@@ -51,11 +51,15 @@ def sql_column_builder(data=None):
         sql = 'INSERT INTO table SET {}'.format(sql_column_builder(data))
 
     """
-
-    column = ', '.join("{key}='{value}'"
-                       .format(key=key, value=sanitize(value))
-                       for key, value in data.iteritems())
-    return column
+    column_string = ''
+    for key, value in data.iteritems():
+        if isinstance(value, basestring):
+            column_string += ", {key}='{value}'".format(key=key,
+                                                        value=sanitize(value))
+        else:
+            column_string += ", {key}={value}".format(key=key,
+                                                      value=value)
+    return column_string
 
 
 def sql_select_expr_builder(expr=None):
@@ -69,12 +73,13 @@ def sql_select_expr_builder(expr=None):
 class DBQuery(object):
     def insert(self, table=None, col=None):
         try:
-            sql = "INSERT INTO {} SET id=DEFAULT, {}"
+            sql = "INSERT INTO {} SET id=DEFAULT{}"
             sql = sql.format(table, sql_column_builder(col))
             return query(sql)
 
-        except Exception as e:
-            raise
+        except Exception:
+            raise InvalidUsage('Something bad happened in the server.', '',
+                               status_code=500)
 
     def select(self, select_expr=None, table=None, where_clause=None):
         """Select query.
@@ -124,14 +129,34 @@ class Eclass(object):
 
     def add(self, data=None):
         try:
-            data['unique_code'] = generate_unique_code()
             db_query = DBQuery()
-            result = db_query.insert(self.__tablename__, data)
-            SUCCESS_MESSAGE['unique_code'] = data['unique_code']
-            return SUCCESS_MESSAGE
 
-        except Exception as e:
-            return simple_error_message(str(e))
+            eclass_data = {
+                'name': data['name'],
+                'course': data['course'],
+                'university': data['university'],
+                'privilege': data['privilege']
+            }
+            eclass = db_query.insert(table='eclass', col=eclass_data)
+
+            member_data = {
+                'user_id': data['user_id'],
+                'class_id': eclass.lastrowid,
+                'is_creator': 1
+            }
+            member = db_query.insert(table='eclass_member', col=member_data)
+
+            data = dict(eclass_data.items() + member_data.items() +
+                        SUCCESS_MESSAGE.items())
+
+            data['links'] = {
+                'self': '/eclass/{}'.format(member_data['class_id']),
+            }
+            return data
+
+        except KeyError:
+            raise InvalidUsage('Missing request parameter.', '',
+                               status_code=400)
 
     def get_all(self):
         """Get all records"""

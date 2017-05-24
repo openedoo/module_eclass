@@ -36,7 +36,7 @@ def index():
         raise
 
 
-@module_eclass.route('/<eclass_id>', methods=['GET', 'PUT', 'DELETE'])
+@module_eclass.route('/<int:eclass_id>', methods=['GET', 'PUT', 'DELETE'])
 def get_single_eclass(eclass_id):
     try:
         eclass = Eclass()
@@ -55,9 +55,8 @@ def get_single_eclass(eclass_id):
             result = eclass.get(eclass_id)
             return jsonify(result)
 
-    except Exception as e:
-        error = simple_error_message(str(e))
-        return jsonify(error)
+    except Exception:
+        raise
 
 
 @module_eclass.route('/<eclass_id>/members', methods=['GET', 'POST'])

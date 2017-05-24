@@ -69,20 +69,19 @@ class Eclass(object):
             return simple_error_message(str(e))
 
     def update(self, data=None):
-        """Update a record by id"""
+        """Update eclass by id"""
 
         try:
             column_data = {key: value for key, value in data.iteritems()
                            if key not in ('id')}
-            column = sql_column_builder(column_data)
-            sql = 'UPDATE {} SET {} WHERE id={}'
-            sql = sql.format(self.__tablename__, column, data['id'])
-            # The query execution doesn't return any value
-            query(sql)
+
+            db_query = DBQuery()
+            result = db_query.update('eclass', column_data, {'id': data['id']})
             return SUCCESS_MESSAGE
 
-        except Exception as e:
-            return simple_error_message(str(e))
+        except KeyError:
+            raise InvalidUsage('Missing request parameter.', '',
+                               status_code=400)
 
     def delete(self, eclass_id=None):
         """Delete a record by id"""

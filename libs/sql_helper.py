@@ -21,14 +21,15 @@ def sql_column_builder(data=None):
         sql = 'INSERT INTO table SET {}'.format(sql_column_builder(data))
 
     """
-    column_string = ''
+    tmp = []
     for key, value in data.iteritems():
         if isinstance(value, basestring):
-            column_string += ", {key}='{value}'".format(key=key,
-                                                        value=sanitize(value))
+            sanitized_value = sanitize(value)
+            tmp.append("{key}='{value}'".format(key=key, value=sanitized_value))
         else:
-            column_string += ", {key}={value}".format(key=key,
-                                                      value=value)
+            tmp.append("{key}={value}".format(key=key, value=value))
+
+    column_string = ', '.join(tmp)
     return column_string
 
 
@@ -91,3 +92,24 @@ class DBQuery(object):
 
         except Exception as e:
             raise
+
+    def update(self, table=None, col=None, where_clause=None):
+        try:
+            sql_where = ''
+            for key, value in where_clause.iteritems():
+                if isinstance(value, basestring):
+                    sql_where = "{key}='{value}'"
+                    sql_where = sql_where.format(key=key, value=sanitize(value))
+                else:
+                    sql_where = "{key}={value}"
+                    sql_where = sql_where.format(key=key, value=value)
+
+            column = sql_column_builder(col)
+            sql = 'UPDATE {} SET {} WHERE {}'
+            sql = sql.format(table, column, sql_where)
+            result = query(sql)
+            return result
+
+        except Exception:
+            raise InvalidUsage('Something bad happened in the server.', '',
+                               status_code=500)

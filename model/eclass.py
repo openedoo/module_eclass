@@ -44,19 +44,19 @@ class Eclass(object):
             raise InvalidUsage('Missing request parameter.', '',
                                status_code=400)
 
-    def get_all(self):
-        """Get all records"""
+    def get_all(self, pagination=None):
+        """Get all eclass"""
 
         try:
             db_query = DBQuery()
-            result = db_query.select(table=self.__tablename__)
+            result = db_query.select(table='eclass', pagination=pagination)
             return result
 
         except Exception as e:
             return simple_error_message(str(e))
 
     def get(self, eclass_id=None):
-        """Get record by id"""
+        """Get eclass by id"""
 
         try:
             where_clause = {'id': eclass_id}

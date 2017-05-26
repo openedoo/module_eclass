@@ -52,7 +52,9 @@ class DBQuery(object):
             raise InvalidUsage('Something bad happened in the server.', '',
                                status_code=500)
 
-    def select(self, select_expr=None, table=None, where_clause=None):
+    def select(self,
+               select_expr=None,
+               table=None, where_clause=None, pagination=None):
         """Select query.
 
         You can pass the select expression with python list for many columns,
@@ -78,11 +80,14 @@ class DBQuery(object):
             else:
                 col = sql_select_expr_builder(select_expr)
 
-            sql = 'SELECT {} FROM {}'.format(col, table)
+            start_page = pagination['start_page'] if pagination else 0
+            limit = pagination['limit'] if pagination else 20
+            sql = 'SELECT {} FROM {} LIMIT {}, {}'.format(col,
+                                                          table,
+                                                          start_page,
+                                                          limit)
             if where_clause:
-                sql_where = "{key}='{value}'"
-                for key, value in where_clause.iteritems():
-                    sql_where = sql_where.format(key=key, value=sanitize(value))
+                sql_where = sql_column_builder(where_clause)
                 sql = 'SELECT {} FROM {} WHERE {}'.format(col,
                                                           table,
                                                           sql_where)
@@ -90,8 +95,9 @@ class DBQuery(object):
             result = query(sql)
             return result
 
-        except Exception as e:
-            raise
+        except Exception:
+            raise InvalidUsage('Something bad happened in the server.', '',
+                               status_code=500)
 
     def update(self, table=None, col=None, where_clause=None):
         try:

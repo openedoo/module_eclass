@@ -3,7 +3,7 @@ from openedoo.core.libs import Blueprint, request, response
 from .libs.error_handler import InvalidUsage, simple_error_message
 from .model.eclass import Eclass
 
-
+RESULT_PER_PAGE = 20
 module_eclass = Blueprint('module_eclass', __name__)
 
 
@@ -29,7 +29,13 @@ def index():
                                status_code=415)
 
         else:
-            result = eclass.get_all()
+            page = int(request.args.get('page')) if request.args else 1
+            start_page = (page - 1) * RESULT_PER_PAGE
+            pagination = {
+                'limit': RESULT_PER_PAGE,
+                'start_page': start_page,
+            }
+            result = eclass.get_all(pagination=pagination)
             return jsonify(result)
 
     except Exception as e:

@@ -61,7 +61,7 @@ class Eclass(object):
         try:
             where_clause = {'id': eclass_id}
             db_query = DBQuery()
-            result = db_query.select(table=self.__tablename__,
+            result = db_query.select(table='eclass',
                                      where_clause=where_clause)
             return result
 

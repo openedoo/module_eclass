@@ -53,7 +53,8 @@ class Eclass(object):
             return result
 
         except Exception as e:
-            return simple_error_message(str(e))
+            raise InvalidUsage('Something bad happened in the server.', str(e),
+                               status_code=500)
 
     def get(self, eclass_id=None):
         """Get eclass by id"""

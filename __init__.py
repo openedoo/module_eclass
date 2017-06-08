@@ -2,6 +2,7 @@ from flask import jsonify
 from openedoo.core.libs import Blueprint, request, response
 from .libs.error_handler import InvalidUsage, simple_error_message
 from .model.eclass import Eclass
+from .model.eclass_member import EclassMember
 
 RESULT_PER_PAGE = 20
 module_eclass = Blueprint('module_eclass', __name__)
@@ -65,15 +66,18 @@ def get_single_eclass(eclass_id):
         raise
 
 
-@module_eclass.route('/<eclass_id>/members', methods=['GET', 'POST'])
+@module_eclass.route('/<int:eclass_id>/members', methods=['GET', 'POST'])
 def eclass_members(eclass_id):
     try:
-        eclass = Eclass()
+        member = EclassMember()
         # Only accept application/json in post request data
         request_data = request.get_json(silent=True)
         if request.method == 'POST' and request_data:
-            request_data['id'] = eclass_id
-            result = eclass.add_member(request_data)
+            request_data['class_id'] = eclass_id
+            if 'is_creator' not in request_data:
+                request_data['is_creator'] = 0
+
+            result = member.add(request_data)
             return jsonify(result)
 
         elif request.method == 'POST' and not request_data:

@@ -88,15 +88,14 @@ class DBQuery(object):
                                                           limit)
             if where_clause:
                 sql_where = sql_column_builder(where_clause)
-                sql = 'SELECT {} FROM {} WHERE {}'.format(col,
-                                                          table,
-                                                          sql_where)
+                sql = "SELECT {} FROM {} WHERE {} LIMIT {}, {}"
+                sql = sql.format(col, table, sql_where, start_page, limit)
 
             result = query(sql)
             return result
 
-        except Exception:
-            raise InvalidUsage('Something bad happened in the server.', '',
+        except Exception as e:
+            raise InvalidUsage('Something bad happened in the server.', str(e),
                                status_code=500)
 
     def update(self, table=None, col=None, where_clause=None):

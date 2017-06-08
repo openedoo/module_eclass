@@ -85,12 +85,17 @@ def eclass_members(eclass_id):
                                status_code=415)
 
         else:
-            result = eclass.get_members(eclass_id)
+            page = int(request.args.get('page')) if request.args else 1
+            start_page = (page - 1) * RESULT_PER_PAGE
+            pagination = {
+                'limit': RESULT_PER_PAGE,
+                'start_page': start_page,
+            }
+            result = member.get(eclass_id, pagination)
             return jsonify(result)
 
     except Exception as e:
-        error = simple_error_message(str(e))
-        return jsonify(error)
+        raise
 
 
 app_route = '/<eclass_id>/members/<member_id>'

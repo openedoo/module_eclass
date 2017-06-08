@@ -17,3 +17,15 @@ class EclassMember(object):
 
         except Exception as e:
             raise
+
+    def get(self, eclass_id=None, pagination=None):
+        try:
+            db = DBQuery()
+            where = {'class_id': eclass_id}
+            result = db.select(table=self.member_table,
+                               where_clause=where,
+                               pagination=pagination)
+            return result
+
+        except Exception as e:
+            raise

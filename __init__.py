@@ -98,21 +98,17 @@ def eclass_members(eclass_id):
         raise
 
 
-app_route = '/<eclass_id>/members/<member_id>'
-@module_eclass.route(app_route, methods=['GET', 'DELETE'])
-def eclass_single_member(eclass_id, member_id):
+app_route = '/<int:class_id>/members/<int:user_id>'
+@module_eclass.route(app_route, methods=['DELETE'])
+def eclass_single_member(class_id, user_id):
     try:
-        eclass = Eclass()
-        if request.method == 'DELETE':
-            result = eclass.delete_member(eclass_id, member_id)
-            return jsonify(result)
-
-        result = eclass.get_member(eclass_id, member_id)
+        member = EclassMember()
+        result = member.delete(class_id, user_id)
         return jsonify(result)
 
     except Exception as e:
-        error = simple_error_message(str(e))
-        return jsonify(error)
+        raise InvalidUsage('Failed to load request data', str(e),
+                           status_code=415)
 
 
 @module_eclass.route('/<eclass_id>/admins', methods=['GET'])

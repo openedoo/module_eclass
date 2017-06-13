@@ -118,3 +118,24 @@ class DBQuery(object):
         except Exception:
             raise InvalidUsage('Something bad happened in the server.', '',
                                status_code=500)
+
+    def delete(self, table=None, where_clause=None):
+        try:
+            tmp = []
+            for key, value in where_clause.iteritems():
+                if isinstance(value, basestring):
+                    sql_where = "{key}='{value}'"
+                    sql_where = sql_where.format(key=key, value=sanitize(value))
+                    tmp.append(sql_where)
+                else:
+                    sql_where = "{key}={value}"
+                    sql_where = sql_where.format(key=key, value=value)
+                    tmp.append(sql_where)
+
+            where = ' AND '.join(tmp)
+            sql = 'DELETE FROM {} WHERE {}'.format(table, where)
+            return query(sql)
+
+        except Exception as e:
+            raise InvalidUsage('Something bad happened in the server', str(e),
+                               status_code=500)

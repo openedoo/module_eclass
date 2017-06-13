@@ -29,3 +29,14 @@ class EclassMember(object):
 
         except Exception as e:
             raise
+
+    def delete(self, class_id=None, user_id=None):
+        try:
+            db = DBQuery()
+            where = {'class_id': class_id, 'user_id': user_id}
+            result = db.delete(table=self.member_table, where_clause=where)
+            return SUCCESS_MESSAGE
+
+        except Exception as e:
+            print e
+            raise

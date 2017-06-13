@@ -111,18 +111,6 @@ def eclass_single_member(class_id, user_id):
                            status_code=415)
 
 
-@module_eclass.route('/<eclass_id>/admins', methods=['GET'])
-def eclass_admins(eclass_id):
-    try:
-        eclass = Eclass()
-        result = eclass.get_admins(eclass_id)
-        return jsonify(result)
-
-    except Exception as e:
-        error = simple_error_message(str(e))
-        return jsonify(error)
-
-
 @module_eclass.route('/<eclass_id>/discussions', methods=['GET', 'POST'])
 def eclass_discussion(eclass_id):
     try:

@@ -124,5 +124,5 @@ def eclass_discussion(eclass_id):
             return jsonify(result)
 
     except Exception as e:
-        error = simple_error_message(str(e))
-        return jsonify(error)
+        raise InvalidUsage('Failed to load request data', str(e),
+                           status_code=415)

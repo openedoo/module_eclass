@@ -111,7 +111,7 @@ def eclass_single_member(class_id, user_id):
                            status_code=415)
 
 
-@module_eclass.route('/<eclass_id>/discussions', methods=['GET', 'POST'])
+@module_eclass.route('/<int:eclass_id>/discussions', methods=['GET', 'POST'])
 def eclass_discussion(eclass_id):
     try:
         eclass = Eclass()

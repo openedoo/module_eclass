@@ -15,7 +15,7 @@ def handle_invalid_usage(error):
     return res
 
 
-@module_eclass.route('/', methods=['POST', 'GET'])
+@module_eclass.route('', strict_slashes=False, methods=['POST', 'GET'])
 def index():
     try:
         eclass = Eclass()
@@ -28,6 +28,11 @@ def index():
         elif request.method == 'POST' and not request_data:
             raise InvalidUsage('Failed to load request data', '',
                                status_code=415)
+
+        elif request.method == 'GET' and request.args.get('creator_id'):
+            creator_id = request.args.get('creator_id')
+            result = eclass.get_by_creator(creator_id)
+            return jsonify(result)
 
         else:
             page = int(request.args.get('page')) if request.args else 1

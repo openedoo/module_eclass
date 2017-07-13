@@ -34,6 +34,11 @@ def index():
             result = eclass.get_by_creator(creator_id)
             return jsonify(result)
 
+        elif request.method == 'GET' and request.args.get('member_id'):
+            member_id = request.args.get('member_id')
+            result = eclass.get_by_member(member_id)
+            return jsonify(result)
+
         else:
             page = int(request.args.get('page')) if request.args else 1
             start_page = (page - 1) * RESULT_PER_PAGE

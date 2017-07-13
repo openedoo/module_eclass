@@ -87,6 +87,22 @@ class Eclass(object):
             raise InvalidUsage('Something bad happened in the server.', str(e),
                                status_code=500)
 
+    def get_by_member(self, member_id=None):
+        """Get eclass by member_id"""
+
+        try:
+            sql = """SELECT eclass.* FROM eclass
+                     INNER JOIN eclass_member
+                     ON eclass.id = eclass_member.class_id
+                     AND eclass_member.user_id = {member_id}"""
+            sql = sql.format(member_id=member_id)
+            result = query(sql)
+            return result
+
+        except Exception as e:
+            raise InvalidUsage('Something bad happened in the server', str(e),
+                               status_code=500)
+
     def update(self, data=None):
         """Update eclass by id"""
 

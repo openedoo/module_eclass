@@ -39,3 +39,16 @@ class EclassApiTest(unittest.TestCase):
                                          content_type='application/json')
         self.assertEqual(create_eclass.status_code, 400)
         self.assertIn('Missing request parameter', str(create_eclass.data))
+
+    def test_successfuly_create_eclass(self):
+        com_science_eclass = {
+            'user_id': 56,
+            'name': 'computer science',
+            'university': 'Yogyakarta International University',
+            'course': 'IT',
+            'privilege': 'public'
+        }
+        create_eclass = self.client.post('api/v1/eclass',
+                                         data=json.dumps(com_science_eclass),
+                                         content_type='application/json')
+        self.assertEqual(create_eclass.status_code, 200)

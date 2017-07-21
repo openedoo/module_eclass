@@ -23,3 +23,15 @@ class EclassApiTest(unittest.TestCase):
                                          data=json.dumps(com_science_eclass))
         self.assertEqual(create_eclass.status_code, 415)
         self.assertIn('Failed to load request data', str(create_eclass.data))
+
+    def test_create_eclass_failed_with_400_status_code(self):
+        com_science_eclass = {
+            'name': 'computer science',
+            'university': 'Yogyakarta International University',
+            'course': 'IT'
+        }
+        create_eclass = self.client.post('api/v1/eclass',
+                                         data=json.dumps(com_science_eclass),
+                                         content_type='application/json')
+        self.assertEqual(create_eclass.status_code, 400)
+        self.assertIn('Missing request parameter', str(create_eclass.data))

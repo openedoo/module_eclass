@@ -5,7 +5,7 @@
     "pip_library":[],
     "descriptiom":"testing modul openedoo",
     "type":"git",
-    "url_endpoint":"/eclass",
+    "url_endpoint":"/api/v1/eclass",
     "url_git":"https://github.com/openedoo/module_eclass",
     "author":"officially",
     "database":"database.py"

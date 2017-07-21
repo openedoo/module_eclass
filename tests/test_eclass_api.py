@@ -1,3 +1,4 @@
+import sys
 import json
 import unittest
 from openedoo_project import app, db
@@ -5,6 +6,10 @@ from openedoo_project import app, db
 
 class EclassApiTest(unittest.TestCase):
     def setUp(self):
+        print app.config
+        if not app.config['TESTING']:
+            sys.exit()
+
         self.client = app.test_client()
         db.create_all()
 

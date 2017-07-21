@@ -1,11 +1,15 @@
 import json
 import unittest
-from openedoo_project import app
+from openedoo_project import app, db
 
 
 class EclassApiTest(unittest.TestCase):
     def setUp(self):
         self.client = app.test_client()
+        db.create_all()
+
+    def tearDown(self):
+        db.drop_all()
 
     def test_get_empty_eclass_collection(self):
         eclass = self.client.get('/api/v1/eclass')

@@ -161,3 +161,8 @@ class EclassApiTest(unittest.TestCase):
         eclass = self.client.get('api/v1/eclass/1')
         self.assertEqual(eclass.status_code, 200)
         self.assertIn('computer science', str(eclass.data))
+
+    def test_get_an_eclass_by_id_returns_empty_when_not_found(self):
+        eclass = self.client.get('api/v1/eclass/99999999')
+        self.assertEqual(eclass.status_code, 200)
+        self.assertIn('[]', str(eclass.data))

@@ -247,3 +247,24 @@ class EclassApiTest(unittest.TestCase):
         member = self.client.get('api/v1/eclass/1/members')
         self.assertEqual(member.status_code, 200)
         self.assertIn('67', str(member.data))
+
+    def test_add_member_to_an_eclass_failed_with_415_status_code(self):
+        com_science_eclass = {
+            'user_id': 999,
+            'name': 'computer science',
+            'university': 'Yogyakarta International University',
+            'course': 'IT',
+            'privilege': 'public'
+        }
+        create_cs_eclass = self.client.post('api/v1/eclass',
+                                            data=json.dumps(com_science_eclass),
+                                            content_type='application/json')
+        self.assertEqual(create_cs_eclass.status_code, 200)
+        eclass = self.client.get('api/v1/eclass/1')
+        self.assertEqual(eclass.status_code, 200)
+        self.assertIn('computer science', str(eclass.data))
+
+        member = self.client.post('api/v1/eclass/1/members',
+                                  content_type='application/json')
+        self.assertEqual(member.status_code, 415)
+        self.assertIn('Failed to load request data', str(member.data))

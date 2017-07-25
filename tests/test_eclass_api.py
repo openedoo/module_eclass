@@ -6,7 +6,6 @@ from openedoo_project import app, db
 
 class EclassApiTest(unittest.TestCase):
     def setUp(self):
-        print app.config
         if not app.config['TESTING']:
             sys.exit()
 
@@ -57,3 +56,33 @@ class EclassApiTest(unittest.TestCase):
                                          data=json.dumps(com_science_eclass),
                                          content_type='application/json')
         self.assertEqual(create_eclass.status_code, 200)
+
+    def test_get_eclass_collection(self):
+        com_science_eclass = {
+            'user_id': 56,
+            'name': 'computer science',
+            'university': 'Yogyakarta International University',
+            'course': 'IT',
+            'privilege': 'public'
+        }
+        create_cs_eclass = self.client.post('api/v1/eclass',
+                                            data=json.dumps(com_science_eclass),
+                                            content_type='application/json')
+        self.assertEqual(create_cs_eclass.status_code, 200)
+
+        biology_eclass = {
+            'user_id': 999,
+            'name': 'Biology',
+            'university': 'Yogyakarta International University',
+            'course': 'IT',
+            'privilege': 'public'
+        }
+        create_biology_eclass = self.client.post('api/v1/eclass',
+                                    data=json.dumps(biology_eclass),
+                                    content_type='application/json')
+        self.assertEqual(create_biology_eclass.status_code, 200)
+
+        eclass = self.client.get('api/v1/eclass')
+        self.assertEqual(eclass.status_code, 200)
+        self.assertIn('computer science', str(eclass.data))
+        self.assertIn('Biology', str(eclass.data))

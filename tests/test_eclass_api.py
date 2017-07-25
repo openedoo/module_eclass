@@ -195,3 +195,27 @@ class EclassApiTest(unittest.TestCase):
         eclass = self.client.get('api/v1/eclass/1')
         self.assertEqual(eclass.status_code, 200)
         self.assertIn('computer engineering', str(eclass.data))
+
+    def test_succesfuly_delete_an_eclass(self):
+        com_science_eclass = {
+            'user_id': 999,
+            'name': 'computer science',
+            'university': 'Yogyakarta International University',
+            'course': 'IT',
+            'privilege': 'public'
+        }
+        create_cs_eclass = self.client.post('api/v1/eclass',
+                                            data=json.dumps(com_science_eclass),
+                                            content_type='application/json')
+        self.assertEqual(create_cs_eclass.status_code, 200)
+        eclass = self.client.get('api/v1/eclass/1')
+        self.assertEqual(eclass.status_code, 200)
+        self.assertIn('computer science', str(eclass.data))
+
+        delete_eclass = self.client.delete('api/v1/eclass/1')
+        self.assertEqual(delete_eclass.status_code, 200)
+        self.assertIn('success', str(delete_eclass.data))
+
+        eclass = self.client.get('api/v1/eclass/1')
+        self.assertEqual(eclass.status_code, 200)
+        self.assertIn('[]', str(eclass.data))

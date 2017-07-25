@@ -145,3 +145,19 @@ class EclassApiTest(unittest.TestCase):
         self.assertEqual(eclass.status_code, 200)
         self.assertIn('computer science', str(eclass.data))
         self.assertIn('Biology', str(eclass.data))
+
+    def test_get_an_eclass_by_id(self):
+        com_science_eclass = {
+            'user_id': 999,
+            'name': 'computer science',
+            'university': 'Yogyakarta International University',
+            'course': 'IT',
+            'privilege': 'public'
+        }
+        create_cs_eclass = self.client.post('api/v1/eclass',
+                                            data=json.dumps(com_science_eclass),
+                                            content_type='application/json')
+        self.assertEqual(create_cs_eclass.status_code, 200)
+        eclass = self.client.get('api/v1/eclass/1')
+        self.assertEqual(eclass.status_code, 200)
+        self.assertIn('computer science', str(eclass.data))

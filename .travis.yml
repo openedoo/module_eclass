@@ -4,5 +4,5 @@ install:
   - "pip install openedoo"
   - "openedoo install"
   - "cd openedoo_project"
-  - "python manage.py module install module_eclass"
+  - "python manage.py module install https://github.com/openedoo/module_eclass.git"
   - "python -m unittest discover modules/module_eclass"

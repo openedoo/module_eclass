@@ -1,3 +1,8 @@
+[![Build Status](https://travis-ci.org/openedoo/module_eclass.svg?branch=master)](https://travis-ci.org/openedoo/module_eclass)
+[![codecov](https://codecov.io/gh/openedoo/module_eclass/branch/restful/graph/badge.svg)](https://codecov.io/gh/openedoo/module_eclass)
+
+<hr>
+
 ## Openedoo module Eclass
 
 Eclass module for openedoo, current status is WIP.
@@ -12,6 +17,7 @@ This module is the backend side, it is based on REST API.
 
 
 ## Installing
+
 ```
 $ python manage.py module install 'module_eclass'
 ```

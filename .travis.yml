@@ -3,7 +3,7 @@ python: "2.7"
 addons:
   mariadb: "10.1"
 before_install:
-  - mysql -e 'CREATE DATABASE db_openedoo;'
+  - mysql -u root --password="" -e 'CREATE DATABASE db_openedoo;'
 install:
   - "pip install openedoo"
   - "openedoo install"

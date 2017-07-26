@@ -2,10 +2,15 @@ language: python
 python: "2.7"
 addons:
   mariadb: "10.1"
+before_install:
+  - mysql -e 'CREATE DATABASE db_openedoo;'
 install:
   - "pip install openedoo"
   - "openedoo install"
   - "cd openedoo_project"
   - "echo '{\"db\":{\"db_engine\":\"mysql\",\"db_id\":\"root\",\"db_password\":\"\",\"db_host\":\"localhost\",\"db_port\":\"3306\",\"db_name\":\"db_openedoo\",\"db_prefix\":\"openedoo\"},\"config\":\"Testing\",\"secret_key\":\"openedoo\"}' > config.json"
   - "python manage.py module install https://github.com/openedoo/module_eclass.git"
+  - "python manage.py db init"
+  - "python manage.py db migrate"
+  - "python manage.py db upgrade"
   - "python -m unittest discover modules/module_eclass"

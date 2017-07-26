@@ -13,6 +13,7 @@ class EclassSchema(db.Model):
     """
 
     __tablename__ = 'eclass'
+    __table_args__ = {'extend_existing': True}
     id = db.Column(db.Integer, primary_key=True, nullable=False)
     name = db.Column(db.VARCHAR(50), nullable=False)
     course = db.Column(db.VARCHAR(50))
@@ -33,6 +34,7 @@ class EclassPostsSchema(db.Model):
     """
 
     __tablename__ = 'eclass_discussion'
+    __table_args__ = {'extend_existing': True}
     id = db.Column(db.Integer, primary_key=True, nullable=False)
     class_id = db.Column(db.Integer, nullable=False)
     description = db.Column(db.Text)
@@ -52,6 +54,7 @@ class EclassMemberSchema(db.Model):
     """
 
     __tablename__ = 'eclass_member'
+    __table_args__ = {'extend_existing': True}
     id = db.Column(db.Integer, primary_key=True, nullable=False)
     class_id = db.Column(db.Integer, nullable=False)
     user_id = db.Column(db.Integer, nullable=False)

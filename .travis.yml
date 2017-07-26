@@ -6,6 +6,7 @@ before_install:
   - mysql -u root --password="" -e 'CREATE DATABASE db_openedoo;'
 install:
   - "pip install openedoo"
+  - "pip install codecov coverage"
   - "openedoo install"
   - "cd openedoo_project"
   - "echo '{\"db\":{\"db_engine\":\"mysql\",\"db_id\":\"root\",\"db_password\":\"\",\"db_host\":\"localhost\",\"db_port\":\"3306\",\"db_name\":\"db_openedoo\",\"db_prefix\":\"openedoo\"},\"config\":\"Testing\",\"secret_key\":\"openedoo\"}' > config.json"
@@ -13,4 +14,5 @@ install:
   - "python manage.py db init"
   - "python manage.py db migrate"
   - "python manage.py db upgrade"
-script: "python -m unittest discover modules"
+script: "coverage -m unittest discover modules"
+after_success: "codecov"

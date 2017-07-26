@@ -1,0 +1,8 @@
+language: python
+python: "2.7"
+install:
+  - "pip install openedoo"
+  - "openedoo install"
+  - "cd openedoo_project"
+  - "python manage.py module install module_eclass"
+  - "python -m unittest discover modules/module_eclass"

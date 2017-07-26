@@ -14,5 +14,5 @@ install:
   - "python manage.py db init"
   - "python manage.py db migrate"
   - "python manage.py db upgrade"
-script: "coverage -m unittest discover modules"
+script: "coverage run -m unittest discover modules"
 after_success: "codecov"

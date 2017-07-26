@@ -1,5 +1,7 @@
 language: python
 python: "2.7"
+addons:
+  mariadb: "10.1"
 install:
   - "pip install openedoo"
   - "openedoo install"

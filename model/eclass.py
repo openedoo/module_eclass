@@ -1,6 +1,6 @@
 import json
 import datetime
-from openedoo_project.db.raw import query
+from ..libs.raw_query import query
 from ..database import EclassSchema, EclassPostsSchema
 from ..libs.error_handler import InvalidUsage, simple_error_message
 from ..libs.sql_helper import DBQuery, sql_column_builder

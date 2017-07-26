@@ -1,4 +1,4 @@
-from openedoo_project.db.raw import query
+from .raw_query import query
 from .security import sanitize
 from .error_handler import InvalidUsage
 

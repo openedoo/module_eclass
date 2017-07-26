@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/openedoo/module_eclass.svg?branch=master)](https://travis-ci.org/openedoo/module_eclass)
+[![Build Status](https://travis-ci.org/openedoo/module_eclass.svg?branch=restful)](https://travis-ci.org/openedoo/module_eclass)
 [![codecov](https://codecov.io/gh/openedoo/module_eclass/branch/restful/graph/badge.svg)](https://codecov.io/gh/openedoo/module_eclass)
 
 <hr>

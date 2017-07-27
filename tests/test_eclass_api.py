@@ -300,3 +300,29 @@ class EclassApiTest(unittest.TestCase):
         leave_eclass = self.client.delete('api/v1/eclass/1/members/67')
         self.assertEqual(leave_eclass.status_code, 200)
         self.assertIn('success', str(leave_eclass.data))
+
+    def test_successfuly_add_discussion_in_an_eclass(self):
+        com_science_eclass = {
+            'user_id': 999,
+            'name': 'computer science',
+            'university': 'Yogyakarta International University',
+            'course': 'IT',
+            'privilege': 'public'
+        }
+        create_cs_eclass = self.client.post('api/v1/eclass',
+                                            data=json.dumps(com_science_eclass),
+                                            content_type='application/json')
+        self.assertEqual(create_cs_eclass.status_code, 200)
+        eclass = self.client.get('api/v1/eclass/1')
+        self.assertEqual(eclass.status_code, 200)
+        self.assertIn('computer science', str(eclass.data))
+
+        discussion = {
+            'user_id': 999999,
+            'description': "Something about a discusion here ~!@#$%^*()_+"
+        }
+        add_discussion = self.client.post('api/v1/eclass/1/discussions',
+                                          data=json.dumps(discussion),
+                                          content_type='application/json')
+        self.assertEqual(add_discussion.status_code, 200)
+        self.assertIn('success', str(add_discussion.data))

@@ -135,12 +135,6 @@ class Eclass(object):
         """Add discussion"""
 
         try:
-            get_admins = self.get_admins(eclass_id)
-            if data['user_id'] not in get_admins:
-                raise ValueError('The user is not permitted to post any '
-                                 'discussion here')
-
-
             current_time = str(datetime.datetime.now())
             data['created'] = current_time
             data['edited'] = current_time
